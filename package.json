@@ -19,16 +19,17 @@
   "homepage": "https://github.com/patrick-lai/my-bio#readme",
   "dependencies": {
     "lodash": "^4.17.10",
-    "react": ">= 16.4.0",
-    "react-dom": ">= 16.4.0",
-    "react-spring": "^6.1.10"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-icons": "^3.2.2",
+    "react-spring": "^6.1.10",
+    "react-vertical-timeline-component": "^2.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "less": "^3.9.0",
-    "parcel-bundler": "latest",
-    "sass": "^1.15.1"
+    "parcel-bundler": "latest"
   }
 }
