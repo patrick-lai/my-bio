@@ -1,5 +1,6 @@
 {
+  "parser": "babel-eslint",
   "rules": {
-    "react/sort-comp": 1
+    "max-len": ["error", 120, { "ignoreComments": true, "ignoreUrls": true }]
   }
 }
