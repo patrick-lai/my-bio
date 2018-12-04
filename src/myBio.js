@@ -71,7 +71,7 @@ const achievements = [
 
 export default [
   ...setItemsType('work')(work),
-  ...setItemsType('projects')(projects),
+  ...setItemsType('project')(projects),
   ...setItemsType('achievement')(achievements)
 ];
 

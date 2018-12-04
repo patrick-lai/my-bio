@@ -19,7 +19,7 @@ class App extends React.PureComponent {
     <Parallax
       ref={ref => (this.parallax = ref)}
       pages={3}
-      config={config.wobbly}
+      config={config.molasses}
       style={BG_STYLES}
     >
       <ParallaxLayer speed={0} factor={5} style={BG_STYLES}>

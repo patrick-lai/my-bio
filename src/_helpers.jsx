@@ -5,7 +5,7 @@
 import React from 'react';
 import { ParallaxLayer } from 'react-spring/dist/addons';
 import './assets/stars.svg';
-import { FaBeer } from 'react-icons/fa';
+import { FaBeer, FaAward, FaCode } from 'react-icons/fa';
 
 // Parceljs needs better support for inline urls:
 // NOTE: Seems like you also have to import it for this to work
@@ -35,8 +35,25 @@ export const makeStars = (speed, props = {}) => (
 // Easily add Icons and type
 const ICONS = {
   work: {
-    iconStyle: { background: 'rgb(33, 150, 243)', color: '#fff' },
+    iconStyle: {
+      background: 'linear-gradient(to right bottom, #3a6073, #3a7bd5)',
+      color: '#fff'
+    },
     icon: <FaBeer />
+  },
+  achievement: {
+    iconStyle: {
+      background: 'linear-gradient(to right bottom, #f7971e, #ffd200)',
+      color: '#fff'
+    },
+    icon: <FaAward />
+  },
+  project: {
+    iconStyle: {
+      background: 'linear-gradient(to right bottom, #00b09b, #96c93d)',
+      color: '#fff'
+    },
+    icon: <FaCode />
   }
 };
 
