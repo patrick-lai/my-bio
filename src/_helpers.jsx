@@ -11,16 +11,22 @@ import { FaSuitcase, FaAward, FaCode } from 'react-icons/fa';
 // NOTE: Seems like you also have to import it for this to work
 export const getUrl = relativePath => `url(${relativePath})`;
 
-export const makeStars = ({ style, ...rest }) => (
-  <ParallaxLayer
-    style={{
-      backgroundImage: getUrl(starsSvg),
-      backgroundSize: rest.speed % 2 ? 'cover' : 'contain',
-      ...style
-    }}
-    {...rest}
-  />
-);
+export const makeStars = ({ style, offsets = [0, 1, 2], speed, ...rest }) => {
+  return offsets.map(offset => (
+    <ParallaxLayer
+      style={{
+        backgroundImage: getUrl(starsSvg),
+        backgroundRepeat: 'repeat',
+        backgroundPosition: `${Math.abs(Math.random() * 100)}%`,
+        ...style
+      }}
+      factor={speed * 2}
+      offset={offset}
+      speed={speed}
+      {...rest}
+    />
+  ));
+};
 
 // Easily add Icons and type
 const ICONS = {
