@@ -161,17 +161,16 @@
   }
 }
 .vertical-timeline-element-content {
+  overflow: hidden;
   position: relative;
   margin-left: 60px;
   background: @color-bright;
   border-radius: 0.25em;
-  padding: 1em;
-  box-shadow: 0 3px 0 @color-bright;
+  padding: 0;
 
   & > .item-content {
     overflow: hidden;
     padding: 1.5em;
-    position: relative;
   }
 }
 .vertical-timeline-element--no-children .vertical-timeline-element-content {
@@ -194,7 +193,7 @@
   color: #333;
 }
 .vertical-timeline-element-content .vertical-timeline-element-date {
-  color: @color-font;
+  color: #333;
   display: inline-block;
 }
 
@@ -211,7 +210,7 @@
 }
 .vertical-timeline-element-content .vertical-timeline-element-date {
   float: left;
-  padding: 0.8em 0;
+  padding: 0.5em 1em;
   opacity: 0.7;
 }
 .vertical-timeline-element-content::before {
@@ -239,10 +238,21 @@
     font-size: 0.8em;
   }
 }
+
 @media only screen and (min-width: 1170px) {
+  .vertical-timeline-element-content {
+    overflow: visible;
+    & > .item-content {
+      position: relative;
+    }
+  }
+  .vertical-timeline-element-content .vertical-timeline-element-date {
+    color: @color-bright;
+    display: inline-block;
+    padding: 0.5em 3em;
+  }
   .vertical-timeline--two-columns .vertical-timeline-element-content {
     margin-left: 0;
-    padding: 0;
     width: 40%;
   }
   .vertical-timeline--two-columns .vertical-timeline-element-content::before {
@@ -435,5 +445,4 @@
 
 .vertical-timeline-element-date {
   font-size: 1.2em !important;
-  padding: 0.5em 3em !important;
 }
