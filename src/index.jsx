@@ -4,6 +4,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import _debounce from 'lodash/debounce';
 import { Parallax, ParallaxLayer } from 'react-spring/dist/addons';
 import { Spring, config } from 'react-spring';
 import { getUrl, makeStars } from './_helpers';
@@ -16,19 +17,40 @@ const BG_STYLES = {
   background: `radial-gradient(circle at center, #0f2027, #274e60, #0f2027) 0 0 / 120%`
 };
 
+// Magic number seems to work
+const _determinePages = () => {
+  // Determined in timeline.less
+  if (window.outerHeight > 1169) return 3;
+  return Math.max(Math.round(3000 / window.outerHeight), 3);
+};
+
+const determinePages = _debounce(_determinePages, 800);
 class App extends React.PureComponent {
+  state = { pages: _determinePages() };
+
+  componentWillMount = () => {
+    determinePages();
+    window.addEventListener('resize', this.updateDimensions);
+  };
+
+  // Depends on screen ratio
+  updateDimensions = () => this.setState({ pages: determinePages() });
+
   render = () => (
     <Parallax
       ref={ref => (this.parallax = ref)}
-      pages={3}
+      pages={this.state.pages}
       config={config.molasses}
       style={BG_STYLES}
     >
-      <ParallaxLayer speed={0} factor={5} style={BG_STYLES} />
+      {/* Main gradient background*/}
+      <ParallaxLayer speed={0} factor={this.state.pages} style={BG_STYLES} />
 
+      {/* Parallaxed Stars in the background */}
       {makeStars({ speed: 1 })}
       {makeStars({ speed: 2, style: { backgroundSize: '200%' } })}
 
+      {/* Content */}
       <ParallaxLayer>
         <section className="jumbotron">
           <div>
@@ -46,11 +68,12 @@ class App extends React.PureComponent {
         </section>
       </ParallaxLayer>
 
+      {/* Timeline */}
       <ParallaxLayer offset={0.5}>
         <Timeline items={myBio} />
       </ParallaxLayer>
 
-      {/* Adding some foreground gives the page a bit more dimension feel */}
+      {/* Adding some foreground for immersive feel */}
       {makeStars({ speed: 5, style: { backgroundSize: '500%' } })}
     </Parallax>
   );

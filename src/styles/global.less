@@ -3,8 +3,13 @@
 @import './_variables.less';
 
 html {
+  overflow: hidden;
   line-height: 1.5em;
   background-color: @color-base;
+}
+
+body {
+  overflow: hidden;
 }
 
 a {
@@ -30,14 +35,14 @@ a:hover {
 }
 
 .jumbotron {
-  margin-top: 20vh;
-  height: 30vh;
+  margin-top: 100px;
+  height: 20vh;
   min-height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 200%;
+  font-size: 1.5em;
 }
 
 .contact-details {
@@ -91,5 +96,16 @@ a:hover {
     width: 150%;
     mix-blend-mode: luminosity;
     pointer-events: none;
+  }
+}
+
+@media only screen and (min-width: 1170px) {
+  .jumbotron {
+    margin-top: 200px;
+    font-size: 2em;
+  }
+
+  .contact-details {
+    font-size: 1.5em;
   }
 }
