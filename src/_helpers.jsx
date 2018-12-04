@@ -11,23 +11,15 @@ import { FaSuitcase, FaAward, FaCode } from 'react-icons/fa';
 // NOTE: Seems like you also have to import it for this to work
 export const getUrl = relativePath => `url(${relativePath})`;
 
-export const makeStars = (speed, props = {}, alignments = [-1, 0, 1]) => (
-  <React.Fragment>
-    {/* We need to start from -1 to cater for overscrolling */}
-    {alignments.map((offset, index) => (
-      <ParallaxLayer
-        key={index}
-        offset={offset}
-        speed={speed * Math.abs(offset ? offset * 0.5 : 0.2)}
-        factor={speed * 2}
-        style={{
-          backgroundImage: getUrl(starsSvg),
-          backgroundSize: speed % 2 ? 'cover' : 'contain',
-          ...props.style
-        }}
-      />
-    ))}
-  </React.Fragment>
+export const makeStars = ({ style, ...rest }) => (
+  <ParallaxLayer
+    style={{
+      backgroundImage: getUrl(starsSvg),
+      backgroundSize: rest.speed % 2 ? 'cover' : 'contain',
+      ...style
+    }}
+    {...rest}
+  />
 );
 
 // Easily add Icons and type

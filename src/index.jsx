@@ -26,7 +26,9 @@ class App extends React.PureComponent {
     >
       <ParallaxLayer speed={0} factor={5} style={BG_STYLES} />
 
-      {[2, 3].map(speed => makeStars(speed))}
+      {makeStars({ speed: 2, offset: 0, factor: 5 })}
+      {makeStars({ speed: 2, offset: 1.5, factor: 6 })}
+      {makeStars({ speed: 3, offset: 0, factor: 9 })}
 
       <ParallaxLayer>
         <section className="jumbotron">
@@ -50,15 +52,7 @@ class App extends React.PureComponent {
       </ParallaxLayer>
 
       {/* Adding some foreground gives the page a bit more dimension feel */}
-      {makeStars(
-        13,
-        {
-          style: {
-            pointerEvents: 'none'
-          }
-        },
-        [0]
-      )}
+      {makeStars({ speed: 13, factor: 30, style: { pointerEvents: 'none' } })}
     </Parallax>
   );
 }
