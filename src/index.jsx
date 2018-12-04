@@ -25,10 +25,16 @@ const _determinePages = () => {
 };
 
 const determinePages = _debounce(_determinePages, 800);
+
 class App extends React.PureComponent {
   state = { pages: _determinePages() };
 
-  componentWillMount = () => {
+  // The makeStars function does some randomization, we dont want to keep regenerating per render
+  stars1 = makeStars({ speed: 1 });
+  stars2 = makeStars({ speed: 2, style: { backgroundSize: '200%' } });
+  stars3 = makeStars({ speed: 5, style: { backgroundSize: '500%', pointerEvents: 'none' } });
+
+  componentDidMount = () => {
     determinePages();
     window.addEventListener('resize', this.updateDimensions);
   };
@@ -42,8 +48,8 @@ class App extends React.PureComponent {
       <ParallaxLayer speed={0} factor={this.state.pages} style={BG_STYLES} />
 
       {/* Parallaxed Stars in the background */}
-      {makeStars({ speed: 1 })}
-      {makeStars({ speed: 2, style: { backgroundSize: '200%' } })}
+      {this.stars1}
+      {this.stars2}
 
       {/* Content */}
       <ParallaxLayer>
@@ -69,7 +75,7 @@ class App extends React.PureComponent {
       </ParallaxLayer>
 
       {/* Adding some foreground for immersive feel */}
-      {makeStars({ speed: 5, style: { backgroundSize: '500%', pointerEvents: 'none' } })}
+      {this.stars3}
     </Parallax>
   );
 }

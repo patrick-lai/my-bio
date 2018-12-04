@@ -2,11 +2,13 @@
  * Configuration driven timeline
  */
 
-import swal from 'swal';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import _sortBy from 'lodash/sortBy';
 import React from 'react';
-import { setItemsType, getUrl } from './_helpers';
 import dayjs from 'dayjs'; // Moment waaay tooo big
+import { setItemsType, getUrl } from './_helpers';
+import IPhone from './components/iPhone';
 
 // Logos
 import iagLogo from './assets/iag-logo.jpg';
@@ -16,6 +18,14 @@ import reactLogo from './assets/react-logo.png';
 import reactNativeLogo from './assets/react-native-logo.png';
 import nodeLogo from './assets/node-logo.png';
 import secureWarriorLogo from './assets/secure-warrior-logo.jpeg';
+
+// Images
+import mm0 from './assets/mangoManga/0.jpg';
+import mm1 from './assets/mangoManga/1.jpg';
+import mm2 from './assets/mangoManga/2.jpg';
+import mm3 from './assets/mangoManga/3.jpg';
+
+const MySwal = withReactContent(Swal);
 
 const work = [
   {
@@ -77,7 +87,32 @@ const projects = [
   },
   {
     title: 'Mobile manga reader',
-    subtitle: 'React native',
+    subtitle: (
+      <a
+        onClick={() =>
+          MySwal.fire(
+            <div>React native app on iOS/Android</div>,
+            <div className="flex-row-images" style={{ width: '100%' }}>
+              <IPhone>
+                <img src={mm0} />
+              </IPhone>
+              <IPhone>
+                <img src={mm1} />
+              </IPhone>
+              <IPhone>
+                <img src={mm2} />
+              </IPhone>
+              <IPhone>
+                <img src={mm3} />
+              </IPhone>
+            </div>
+          )
+        }
+        target="_blank"
+      >
+        React native
+      </a>
+    ),
     from: dayjs('2018-06'),
     monogram: getUrl(reactNativeLogo)
   },

@@ -31,14 +31,14 @@ const makeElement = ({ title, subtitle, content, from, to, icon = {}, monogram }
       <Monogram backgroundImage={monogram}>
         <h3 className="vertical-timeline-element-title">{title}</h3>
         <h4 className="vertical-timeline-element-subtitle">{subtitle}</h4>
-        <p>{content}</p>
+        <div>{content}</div>
       </Monogram>
     </div>
   </VerticalTimelineElement>
 );
 
 export default class Timeline extends React.PureComponent {
+  // TODO: Implement filters
   state = { omit: [] };
-
   render = () => <VerticalTimeline>{this.props.items && this.props.items.map(makeElement)}</VerticalTimeline>;
 }

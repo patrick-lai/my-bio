@@ -14,6 +14,7 @@ export const getUrl = relativePath => `url(${relativePath})`;
 export const makeStars = ({ style, offsets = [0, 1, 2], speed, ...rest }) => {
   return offsets.map(offset => (
     <ParallaxLayer
+      key={offset}
       style={{
         backgroundImage: getUrl(starsSvg),
         backgroundRepeat: 'repeat',
