@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/patrick-lai/my-bio#readme",
   "dependencies": {
+    "dayjs": "^1.7.7",
+    "inspector": "^0.5.0",
     "lodash": "^4.17.10",
+    "moment": "^2.22.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-icons": "^3.2.2",

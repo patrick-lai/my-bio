@@ -2,33 +2,64 @@
  * Configuration driven timeline
  */
 
+import _sortBy from 'lodash/sortBy';
 import React from 'react';
-import { setItemsType } from './_helpers';
+import { setItemsType, getUrl } from './_helpers';
+import dayjs from 'dayjs'; // Moment waaay tooo big
+
+// Logos
+import iagLogo from './assets/iag-logo.jpg';
+import nphLogo from './assets/nph-logo.jpeg';
+import koorongLogo from './assets/koorong-logo.jpeg';
+import reactLogo from './assets/react-logo.png';
+import reactNativeLogo from './assets/react-native-logo.png';
+import nodeLogo from './assets/node-logo.png';
+import secureWarriorLogo from './assets/secure-warrior-logo.jpeg';
 
 const work = [
   {
     title: 'Senior developer',
-    subtitle: 'Insurance Australia Group',
-    from: 'May 2018',
-    to: 'present'
+    subtitle: (
+      <a href="https://www.iag.com.au/" target="_blank">
+        Insurance Australia Group
+      </a>
+    ),
+    from: dayjs('2018-05'),
+    to: 'present',
+    monogram: getUrl(iagLogo)
   },
   {
     title: 'Technical lead',
-    subtitle: 'Next Practice Health',
-    from: 'November 2017',
-    to: 'May 2018'
+    subtitle: (
+      <a href="https://www.koorong.com/" target="_blank">
+        Next Practice Health
+      </a>
+    ),
+    from: dayjs('2017-11'),
+    to: dayjs('2018-05'),
+    monogram: getUrl(nphLogo)
   },
   {
     title: 'Full stack developer',
-    subtitle: 'Next Practice Health',
-    from: 'Jan 2016',
-    to: 'May 2018'
+    subtitle: (
+      <a href="https://nextpracticehealth.com/" target="_blank">
+        Next Practice Health
+      </a>
+    ),
+    from: dayjs('2016-01'),
+    to: dayjs('2018-05'),
+    monogram: getUrl(nphLogo)
   },
   {
     title: 'Frontend developer',
-    subtitle: 'Koorong Books',
-    from: 'April 2013',
-    to: 'Dec 2015'
+    subtitle: (
+      <a href="https://nextpracticehealth.com/" target="_blank">
+        Koorong Books
+      </a>
+    ),
+    from: dayjs('2013-04'),
+    to: dayjs('2015-12'),
+    monogram: getUrl(koorongLogo)
   }
 ];
 
@@ -36,17 +67,20 @@ const projects = [
   {
     title: 'Realtime audio visualization',
     subtitle: 'Webaudio api',
-    from: 'Feb 2016'
+    from: dayjs('2016-02'),
+    monogram: getUrl(reactLogo)
   },
   {
     title: 'Mobile manga reader',
     subtitle: 'React native',
-    from: 'May 2017'
+    from: dayjs('2018-06'),
+    monogram: getUrl(reactNativeLogo)
   },
   {
     title: 'iPhone sniper',
     subtitle: 'Notification service',
-    from: 'August 2017'
+    from: dayjs('2017-08'),
+    monogram: getUrl(nodeLogo)
   }
 ];
 
@@ -58,14 +92,27 @@ const achievements = [
         Secure code warrior
       </a>
     ),
-    from: 'April 2013',
-    to: 'Dec 2015'
+    from: dayjs('2018-06'),
+    monogram: getUrl(secureWarriorLogo)
   },
   {
     title: 'First place IAG Hackathon',
     subtitle: 'Koorong Books',
-    from: 'April 2013',
-    to: 'Dec 2015'
+    from: dayjs('2018-07'),
+    monogram: getUrl(iagLogo)
+  },
+  {
+    title: 'First Clinic launched',
+    subtitle: (
+      <a
+        href="https://nextpracticehealth.com/locations/wa-cloverdale"
+        target="_blank"
+      >
+        Next Practice Health Cloverdale
+      </a>
+    ),
+    from: dayjs('2018-03'),
+    monogram: getUrl(nphLogo)
   }
 ];
 
@@ -73,24 +120,7 @@ export default [
   ...setItemsType('work')(work),
   ...setItemsType('project')(projects),
   ...setItemsType('achievement')(achievements)
-];
-
-{
-  /* <VerticalTimelineElement
-className="vertical-timeline-element--work"
-date="2011 - present"
-iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-icon={<FaBeer />}
->
-<h3 className="vertical-timeline-element-title">Creative Director</h3>
-<h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-<p>
-  Creative Direction, User Experience, Visual Design, Project
-  Management, Team Leading
-</p>
-</VerticalTimelineElement>
-<VerticalTimelineElement
-iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-icon={<FaBeer />}
-/> */
-}
+].sort((a, b) => {
+  const isBefore = b.from.isBefore(a.from);
+  return isBefore ? -1 : 1;
+});

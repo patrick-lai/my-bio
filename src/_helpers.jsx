@@ -4,26 +4,24 @@
 
 import React from 'react';
 import { ParallaxLayer } from 'react-spring/dist/addons';
-import './assets/stars.svg';
-import { FaBeer, FaAward, FaCode } from 'react-icons/fa';
+import starsSvg from './assets/stars.svg';
+import { FaSuitcase, FaAward, FaCode } from 'react-icons/fa';
 
 // Parceljs needs better support for inline urls:
 // NOTE: Seems like you also have to import it for this to work
-export const getUrl = relativePath => `url(${require(relativePath)})`;
+export const getUrl = relativePath => `url(${relativePath})`;
 
-export const makeStars = (speed, props = {}) => (
+export const makeStars = (speed, props = {}, alignments = [-1, 0, 1]) => (
   <React.Fragment>
     {/* We need to start from -1 to cater for overscrolling */}
-    {[-1, 0, 1, 2].map((offset, index) => (
+    {alignments.map((offset, index) => (
       <ParallaxLayer
         key={index}
         offset={offset}
         speed={speed * Math.abs(offset ? offset * 0.5 : 0.2)}
         factor={speed * 2}
         style={{
-          backgroundImage: getUrl('./assets/stars.svg'),
-          // Add some randomness
-          backgroundPostiion: speed % 2 ? 'right' : 'center',
+          backgroundImage: getUrl(starsSvg),
           backgroundSize: speed % 2 ? 'cover' : 'contain',
           ...props.style
         }}
@@ -39,7 +37,7 @@ const ICONS = {
       background: 'linear-gradient(to right bottom, #3a6073, #3a7bd5)',
       color: '#fff'
     },
-    icon: <FaBeer />
+    icon: <FaSuitcase />
   },
   achievement: {
     iconStyle: {

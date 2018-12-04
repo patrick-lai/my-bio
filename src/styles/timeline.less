@@ -167,6 +167,12 @@
   border-radius: 0.25em;
   padding: 1em;
   box-shadow: 0 3px 0 @color-bright;
+
+  & > .item-content {
+    overflow: hidden;
+    padding: 1.5em;
+    position: relative;
+  }
 }
 .vertical-timeline-element--no-children .vertical-timeline-element-content {
   background: 0 0;
@@ -236,7 +242,7 @@
 @media only screen and (min-width: 1170px) {
   .vertical-timeline--two-columns .vertical-timeline-element-content {
     margin-left: 0;
-    padding: 1.5em;
+    padding: 0;
     width: 40%;
   }
   .vertical-timeline--two-columns .vertical-timeline-element-content::before {
