@@ -56,7 +56,7 @@ class App extends React.PureComponent {
 
       {/* Parallaxed Stars in the background */}
       {this.stars1}
-      {/* {this.stars2} */}
+      {this.stars2}
 
       {/* Content */}
       <ParallaxLayer>
@@ -82,7 +82,7 @@ class App extends React.PureComponent {
       </ParallaxLayer>
 
       {/* Adding some foreground for immersive feel */}
-      {/* {this.stars3} */}
+      {this.stars3}
     </Parallax>
   );
 }
