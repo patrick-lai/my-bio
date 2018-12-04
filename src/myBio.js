@@ -2,6 +2,7 @@
  * Configuration driven timeline
  */
 
+import swal from 'swal';
 import _sortBy from 'lodash/sortBy';
 import React from 'react';
 import { setItemsType, getUrl } from './_helpers';
@@ -66,7 +67,11 @@ const work = [
 const projects = [
   {
     title: 'Realtime audio visualization',
-    subtitle: 'Webaudio api',
+    subtitle: (
+      <a href="https://audio-ripple.firebaseapp.com/" target="_blank">
+        Webaudio api
+      </a>
+    ),
     from: dayjs('2016-02'),
     monogram: getUrl(reactLogo)
   },

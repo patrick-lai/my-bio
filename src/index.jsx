@@ -69,7 +69,7 @@ class App extends React.PureComponent {
       </ParallaxLayer>
 
       {/* Adding some foreground for immersive feel */}
-      {makeStars({ speed: 5, style: { backgroundSize: '500%' } })}
+      {makeStars({ speed: 5, style: { backgroundSize: '500%', pointerEvents: 'none' } })}
     </Parallax>
   );
 }

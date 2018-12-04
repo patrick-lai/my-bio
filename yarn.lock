@@ -4839,6 +4839,12 @@ svgo@^1.0.0, svgo@^1.0.5:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+swal@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/swal/-/swal-0.1.0.tgz#730c1219a627ccc9cdd7f209a8c09d9e438a28fb"
+  dependencies:
+    vue "^2.0.1"
+
 table@4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/table/-/table-4.0.2.tgz#a33447375391e766ad34d3486e6e2aedc84d2e36"
@@ -5150,6 +5156,10 @@ vue-eslint-parser@^2.0.2:
     espree "^3.5.2"
     esquery "^1.0.0"
     lodash "^4.17.4"
+
+vue@^2.0.1:
+  version "2.5.17"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
 
 wcwidth@^1.0.1:
   version "1.0.1"
