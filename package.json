@@ -1,0 +1,33 @@
+{
+  "name": "my-bio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo 'TODO'",
+    "watch": "NODE_ENV=development parcel src/index.html --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrick-lai/my-bio.git"
+  },
+  "author": "Patrick Lai <mrphlai@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patrick-lai/my-bio/issues"
+  },
+  "homepage": "https://github.com/patrick-lai/my-bio#readme",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "react": ">= 16.4.0",
+    "react-dom": ">= 16.4.0",
+    "react-spring": "^6.1.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "parcel-bundler": "latest",
+    "sass": "^1.15.1"
+  }
+}

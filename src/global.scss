@@ -1,0 +1,21 @@
+// Main stylesheet
+
+// Variables
+$color-page: #111;
+
+// Any Global styles goes here
+html {
+  line-height: 1.5em;
+  background-color: $color-page;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h1,
+h2,
+h3 {
+  color: white;
+  padding-bottom: 1em;
+}
