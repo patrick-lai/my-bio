@@ -104,10 +104,7 @@ const achievements = [
   {
     title: 'First Clinic launched',
     subtitle: (
-      <a
-        href="https://nextpracticehealth.com/locations/wa-cloverdale"
-        target="_blank"
-      >
+      <a href="https://nextpracticehealth.com/locations/wa-cloverdale" target="_blank">
         Next Practice Health Cloverdale
       </a>
     ),

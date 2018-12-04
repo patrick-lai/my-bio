@@ -3,13 +3,9 @@
  */
 
 import React from 'react';
-import styles from './styles.scss';
+import styles from './styles.less';
 
-export default ({
-  address = 'https://patrick-lai.herokuapp.com/',
-  children,
-  height = 'auto'
-}) => (
+export default ({ address = 'https://patrick-lai.herokuapp.com/', children, height = 'auto' }) => (
   <div className="browser-wrapper" style={{ height }}>
     <div className="browser-navigation-bar">
       <i />

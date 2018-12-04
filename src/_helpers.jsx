@@ -53,5 +53,4 @@ const ICONS = {
   }
 };
 
-export const setItemsType = type => items =>
-  items.map(item => ({ ...item, type, icon: ICONS[type] }));
+export const setItemsType = type => items => items.map(item => ({ ...item, type, icon: ICONS[type] }));
