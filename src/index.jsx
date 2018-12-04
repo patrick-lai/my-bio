@@ -19,9 +19,13 @@ const BG_STYLES = {
 
 // Magic number seems to work
 const _determinePages = () => {
-  // Determined in timeline.less
-  if (window.outerHeight > 1169) return 3;
-  return Math.max(Math.round(3000 / window.outerHeight), 3);
+  try {
+    // Determined in timeline.less
+    if (document.documentElement.clientHeight > 1169) return 3;
+    return Math.max(Math.round(3000 / document.documentElement.clientHeight), 3);
+  } catch {
+    return 3;
+  }
 };
 
 const determinePages = _debounce(_determinePages, 800);

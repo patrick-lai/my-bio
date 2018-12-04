@@ -2,8 +2,8 @@
  * Configuration driven timeline
  */
 
-// import Swal from 'sweetalert2';
-// import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import _sortBy from 'lodash/sortBy';
 import React from 'react';
 import dayjs from 'dayjs'; // Moment waaay tooo big
@@ -25,7 +25,7 @@ import mm1 from './assets/mangoManga/1.jpg';
 import mm2 from './assets/mangoManga/2.jpg';
 import mm3 from './assets/mangoManga/3.jpg';
 
-// const MySwal = withReactContent(Swal);
+const MySwal = withReactContent(Swal);
 
 const work = [
   {
@@ -87,32 +87,32 @@ const projects = [
   },
   {
     title: 'Mobile manga reader',
-    // subtitle: (
-    //   <a
-    //     onClick={() =>
-    //       MySwal.fire(
-    //         <div>React native app on iOS/Android</div>,
-    //         <div className="flex-row-images" style={{ width: '100%' }}>
-    //           <IPhone>
-    //             <img src={mm0} />
-    //           </IPhone>
-    //           <IPhone>
-    //             <img src={mm1} />
-    //           </IPhone>
-    //           <IPhone>
-    //             <img src={mm2} />
-    //           </IPhone>
-    //           <IPhone>
-    //             <img src={mm3} />
-    //           </IPhone>
-    //         </div>
-    //       )
-    //     }
-    //     target="_blank"
-    //   >
-    //     React native
-    //   </a>
-    // ),
+    subtitle: (
+      <a
+        onClick={() =>
+          MySwal.fire(
+            <div>React native app on iOS/Android</div>,
+            <div className="flex-row-images" style={{ width: '100%', transform: 'scale(0.8)' }}>
+              <IPhone>
+                <img src={mm0} />
+              </IPhone>
+              <IPhone>
+                <img src={mm1} />
+              </IPhone>
+              <IPhone>
+                <img src={mm2} />
+              </IPhone>
+              <IPhone>
+                <img src={mm3} />
+              </IPhone>
+            </div>
+          )
+        }
+        target="_blank"
+      >
+        React native
+      </a>
+    ),
     from: dayjs('2018-06'),
     monogram: getUrl(reactNativeLogo)
   },
