@@ -27,6 +27,7 @@ const makeElement = ({
   monogram
 }) => (
   <VerticalTimelineElement
+    key={title + from}
     className="vertical-timeline-element--work"
     date={[from, to]
       .filter(item => !!item)
