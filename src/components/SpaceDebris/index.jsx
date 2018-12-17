@@ -21,10 +21,10 @@ export default class Debris extends React.Component {
     const key1 = _rnd(0, 1);
     const key2 = _rnd(0, 1);
     return {
-      from: { left: X[key1][0], top: _rnd(-120, 120), rotation: _rnd(-30, 30) },
-      to: { left: X[key1][1], top: _rnd(-120, 120), rotation: _rnd(-30, 30) },
-      config: { tension: _rnd(1, 2), friction: _rnd(10, 50), clamp: true },
-      fontSize: _rnd(15, 50),
+      from: { left: X[key1][0], top: _rnd(-120, 120), rotation: _rnd(-60, 60) },
+      to: { left: X[key1][1], top: _rnd(-120, 120), rotation: _rnd(-60, 60) },
+      config: { tension: _rnd(1, 2), friction: _rnd(5, 10), clamp: true },
+      fontSize: _rnd(10, 50),
       Icon: _sample(_values(debris))
     };
   };

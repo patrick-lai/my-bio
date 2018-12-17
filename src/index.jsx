@@ -45,13 +45,6 @@ class App extends React.PureComponent {
       <SpaceDebris />
       <SpaceDebris />
       <SpaceDebris />
-      <SpaceDebris />
-      <SpaceDebris />
-      <SpaceDebris />
-      <SpaceDebris />
-      <SpaceDebris />
-      <SpaceDebris />
-      <SpaceDebris />
     </React.Fragment>
   );
 
@@ -72,11 +65,6 @@ class App extends React.PureComponent {
     <Parallax ref={ref => (this.parallax = ref)} pages={this.state.pages} config={config.molasses} style={BG_STYLES}>
       {/* Main gradient background*/}
       <ParallaxLayer speed={0} factor={this.state.pages} style={BG_STYLES}>
-        {this.debris}
-        {this.debris}
-        {this.debris}
-        {this.debris}
-        {this.debris}
         {this.debris}
         {this.debris}
       </ParallaxLayer>
