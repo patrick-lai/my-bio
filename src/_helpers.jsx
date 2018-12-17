@@ -11,7 +11,7 @@ import { FaSuitcase, FaAward, FaCode } from 'react-icons/fa';
 // NOTE: Seems like you also have to import it for this to work
 export const getUrl = relativePath => `url(${relativePath})`;
 
-export const makeStars = ({ style, offsets = [0, 1, 2], speed, ...rest }) => {
+export const makeStars = ({ style, offsets = [0, 1, 2], speed, children, ...rest }) => {
   return offsets.map(offset => (
     <ParallaxLayer
       key={offset}
@@ -25,7 +25,9 @@ export const makeStars = ({ style, offsets = [0, 1, 2], speed, ...rest }) => {
       offset={offset}
       speed={speed}
       {...rest}
-    />
+    >
+      {children}
+    </ParallaxLayer>
   ));
 };
 
