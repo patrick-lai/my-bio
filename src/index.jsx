@@ -66,11 +66,10 @@ class App extends React.PureComponent {
       {/* Main gradient background*/}
       <ParallaxLayer speed={0} factor={this.state.pages} style={BG_STYLES}>
         {this.debris}
-        {this.debris}
       </ParallaxLayer>
 
       {/* Parallaxed Stars in the background */}
-      {this.stars1}
+      {/* {this.stars1} */}
       {this.stars2}
 
       {/* Content */}
