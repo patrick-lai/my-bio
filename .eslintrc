@@ -1,4 +1,9 @@
 {
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "parser": "babel-eslint",
   "extends": "airbnb",
   "rules": {
     "max-len": ["error", 120, { "ignoreComments": true, "ignoreUrls": true }]

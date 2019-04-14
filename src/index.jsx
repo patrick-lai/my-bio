@@ -16,7 +16,7 @@ import { FaGithub } from 'react-icons/fa';
 import { IoMdMail } from 'react-icons/io';
 
 const BG_STYLES = {
-  background: `radial-gradient(circle at center, #0f2027, #274e60, #0f2027) 0 0 / 120%`,
+  background: `radial-gradient(circle at center, #0f2027, #274e60, #0f2027) 0 0 / 120%`
 };
 
 // Magic number seems to work
@@ -53,7 +53,7 @@ class App extends React.PureComponent {
   stars2 = makeStars({ speed: 2, style: { backgroundSize: '200%' } });
   stars3 = makeStars({
     speed: 5,
-    style: { backgroundSize: '500%', pointerEvents: 'none' },
+    style: { backgroundSize: '500%', pointerEvents: 'none' }
   });
 
   componentDidMount = () => {
@@ -65,7 +65,12 @@ class App extends React.PureComponent {
   updateDimensions = () => this.setState({ pages: determinePages() });
 
   render = () => (
-    <Parallax ref={ref => (this.parallax = ref)} pages={this.state.pages} config={config.molasses} style={BG_STYLES}>
+    <Parallax
+      ref={ref => (this.parallax = ref)}
+      pages={this.state.pages}
+      config={config.molasses}
+      style={BG_STYLES}
+    >
       {/* Main gradient background*/}
       <ParallaxLayer speed={0} factor={this.state.pages} style={BG_STYLES}>
         {this.debris}
