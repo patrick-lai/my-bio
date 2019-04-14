@@ -9,4 +9,6 @@ npm run watch
 npm run build
 # publish
 npm run deploy
+# clean parcel cache
+npm run clean
 ```
