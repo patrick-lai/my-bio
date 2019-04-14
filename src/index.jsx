@@ -2,7 +2,6 @@
  * Entry page
  */
 
-import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import _debounce from 'lodash/debounce';
@@ -11,7 +10,7 @@ import { Spring, config } from 'react-spring';
 import { getUrl, makeStars } from './_helpers';
 import Timeline from './components/Timeline';
 import SpaceDebris from './components/SpaceDebris';
-import myBio from './myBio.js';
+import myBio from './myBio';
 import { FaGithub } from 'react-icons/fa';
 import { IoMdMail } from 'react-icons/io';
 
