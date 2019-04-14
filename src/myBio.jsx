@@ -17,6 +17,7 @@ import reactLogo from './assets/react-logo.png';
 import reactNativeLogo from './assets/react-native-logo.png';
 import nodeLogo from './assets/node-logo.png';
 import secureWarriorLogo from './assets/secure-warrior-logo.jpeg';
+import mensaLogo from './assets/mensa-logo.png';
 
 // Images
 import mm0 from './assets/mangoManga/0.jpg';
@@ -152,7 +153,7 @@ const achievements = [
       </a>
     ),
     from: dayjs('2018-08'),
-    monogram: getUrl(nphLogo)
+    monogram: getUrl(mensaLogo)
   },
   {
     title: 'First Clinic launched',

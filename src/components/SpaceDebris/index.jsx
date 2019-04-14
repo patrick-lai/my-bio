@@ -16,6 +16,8 @@ export default ({ delay = 100 }) => {
   // Start with nothing
   const [state, setState] = useState(null);
 
+  const icon = _sample(_values(debris));
+
   // Function to reset the state
   const randomize = useCallback(() => {
     const key1 = _rnd(0, 1);
@@ -28,7 +30,8 @@ export default ({ delay = 100 }) => {
         clamp: true
       },
       fontSize: _rnd(60, 120),
-      Icon: _sample(_values(debris))
+      color: icon.color || '#FFFFFF',
+      Icon: icon
     });
   }, []);
 
@@ -40,7 +43,7 @@ export default ({ delay = 100 }) => {
 
   if (!state) return null;
 
-  const { from, to, config, fontSize, rotation, Icon } = state;
+  const { from, to, config, fontSize, rotation, Icon, color } = state;
 
   return (
     <Spring reset from={from} to={to} config={config} onRest={randomize}>
@@ -51,7 +54,8 @@ export default ({ delay = 100 }) => {
             left: `${styles.left}%`,
             top: `${styles.top}%`,
             fontSize: `${fontSize}pt`,
-            transoform: `rotate(${rotation}deg)`
+            transoform: `rotate(${rotation}deg)`,
+            color: `${color}`
           }}
         />
       )}
