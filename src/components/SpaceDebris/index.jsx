@@ -16,11 +16,11 @@ export default ({ delay = 100 }) => {
   // Start with nothing
   const [state, setState] = useState(null);
 
-  const icon = _sample(_values(debris));
-
   // Function to reset the state
   const randomize = useCallback(() => {
     const key1 = _rnd(0, 1);
+    const icon = _sample(_values(debris));
+
     setState({
       from: { left: X[key1][0], top: _rnd(-120, 120), rotation: _rnd(-60, 60) },
       to: { left: X[key1][1], top: _rnd(-120, 120), rotation: _rnd(-60, 60) },
