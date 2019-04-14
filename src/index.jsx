@@ -39,11 +39,11 @@ class App extends React.PureComponent {
 
   debris = (
     <React.Fragment>
-      <SpaceDebris />
-      <SpaceDebris />
-      <SpaceDebris />
-      <SpaceDebris />
-      <SpaceDebris />
+      <SpaceDebris delay={0} />
+      <SpaceDebris delay={200} />
+      <SpaceDebris delay={400} />
+      <SpaceDebris delay={600} />
+      <SpaceDebris delay={800} />
     </React.Fragment>
   );
 
@@ -76,7 +76,7 @@ class App extends React.PureComponent {
       </ParallaxLayer>
 
       {/* Parallaxed Stars in the background */}
-      {/* {this.stars1} */}
+      {this.stars1}
       {this.stars2}
 
       {/* Content */}
@@ -103,7 +103,7 @@ class App extends React.PureComponent {
       </ParallaxLayer>
 
       {/* Adding some foreground for immersive feel */}
-      {this.stars3}
+      {/* {this.stars3} */}
     </Parallax>
   );
 }

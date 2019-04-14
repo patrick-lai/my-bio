@@ -1,9 +1,13 @@
 /**
  * Timeline basically my CV
+ * NOTE: The react-vertical-timeline-component lib is way too non-performant
  */
 
 import React from 'react';
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import {
+  VerticalTimeline,
+  VerticalTimelineElement
+} from 'react-vertical-timeline-component';
 import { FaBeer } from 'react-icons/fa';
 import { getUrl } from '../../_helpers';
 
@@ -14,7 +18,15 @@ const Monogram = ({ backgroundImage, children }) => (
   </div>
 );
 
-const makeElement = ({ title, subtitle, content, from, to, icon = {}, monogram }) => (
+const makeElement = ({
+  title,
+  subtitle,
+  content,
+  from,
+  to,
+  icon = {},
+  monogram
+}) => (
   <VerticalTimelineElement
     key={title + from}
     className="vertical-timeline-element--work"
@@ -40,5 +52,9 @@ const makeElement = ({ title, subtitle, content, from, to, icon = {}, monogram }
 export default class Timeline extends React.PureComponent {
   // TODO: Implement filters
   state = { omit: [] };
-  render = () => <VerticalTimeline>{this.props.items && this.props.items.map(makeElement)}</VerticalTimeline>;
+  render = () => (
+    <VerticalTimeline>
+      {this.props.items && this.props.items.map(makeElement)}
+    </VerticalTimeline>
+  );
 }

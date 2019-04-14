@@ -46,7 +46,7 @@ const work = [
     title: 'Technical lead',
     subtitle: (
       <a
-        href="https://www.koorong.com/"
+        href="https://nextpracticehealth.com/become-a-partner"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -61,7 +61,7 @@ const work = [
     title: 'Full stack developer',
     subtitle: (
       <a
-        href="https://nextpracticehealth.com/"
+        href="https://nextpracticehealth.com/become-a-partner"
         target="_blank"
         rel="noopener noreferrer"
       >

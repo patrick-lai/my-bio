@@ -1,3 +1,7 @@
+/**
+ * All the tech icons that i am into :)
+ */
+
 export {
   FaAndroid,
   FaAngular,
