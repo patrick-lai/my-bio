@@ -24,8 +24,8 @@ export default ({ delay = 100 }) => {
       from: { left: X[key1][0], top: _rnd(-120, 120), rotation: _rnd(-60, 60) },
       to: { left: X[key1][1], top: _rnd(-120, 120), rotation: _rnd(-60, 60) },
       config: {
-        tension: _rnd(0.1, 0.2),
-        friction: _rnd(0.1, 0.2),
+        tension: _rnd(0.01, 0.1),
+        friction: _rnd(0, 0.1),
         clamp: true
       },
       fontSize: _rnd(60, 120),
