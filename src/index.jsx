@@ -64,12 +64,7 @@ class App extends React.PureComponent {
   updateDimensions = () => this.setState({ pages: determinePages() });
 
   render = () => (
-    <Parallax
-      ref={ref => (this.parallax = ref)}
-      pages={this.state.pages}
-      config={config.molasses}
-      style={BG_STYLES}
-    >
+    <Parallax ref={ref => (this.parallax = ref)} pages={this.state.pages} config={config.molasses} style={BG_STYLES}>
       {/* Main gradient background*/}
       <ParallaxLayer speed={0} factor={this.state.pages} style={BG_STYLES}>
         {this.debris}

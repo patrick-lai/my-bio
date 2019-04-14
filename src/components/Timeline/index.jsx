@@ -4,10 +4,7 @@
  */
 
 import React from 'react';
-import {
-  VerticalTimeline,
-  VerticalTimelineElement
-} from 'react-vertical-timeline-component';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import { FaBeer } from 'react-icons/fa';
 import { getUrl } from '../../_helpers';
 
@@ -18,15 +15,7 @@ const Monogram = ({ backgroundImage, children }) => (
   </div>
 );
 
-const makeElement = ({
-  title,
-  subtitle,
-  content,
-  from,
-  to,
-  icon = {},
-  monogram
-}) => (
+const makeElement = ({ title, subtitle, content, from, to, icon = {}, monogram }) => (
   <VerticalTimelineElement
     key={title + from}
     className="vertical-timeline-element--work"
@@ -49,12 +38,5 @@ const makeElement = ({
   </VerticalTimelineElement>
 );
 
-export default class Timeline extends React.PureComponent {
-  // TODO: Implement filters
-  state = { omit: [] };
-  render = () => (
-    <VerticalTimeline>
-      {this.props.items && this.props.items.map(makeElement)}
-    </VerticalTimeline>
-  );
-}
+// TODO: Implement filters
+export default ({ filter = [], items = [] }) => <VerticalTimeline>{items.map(makeElement)}</VerticalTimeline>;

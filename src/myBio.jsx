@@ -30,11 +30,7 @@ const work = [
   {
     title: 'Senior developer',
     subtitle: (
-      <a
-        href="https://www.iag.com.au/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.iag.com.au/" target="_blank" rel="noopener noreferrer">
         Insurance Australia Group
       </a>
     ),
@@ -45,11 +41,7 @@ const work = [
   {
     title: 'Technical lead',
     subtitle: (
-      <a
-        href="https://nextpracticehealth.com/become-a-partner"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://nextpracticehealth.com/become-a-partner" target="_blank" rel="noopener noreferrer">
         Next Practice Health
       </a>
     ),
@@ -60,11 +52,7 @@ const work = [
   {
     title: 'Full stack developer',
     subtitle: (
-      <a
-        href="https://nextpracticehealth.com/become-a-partner"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://nextpracticehealth.com/become-a-partner" target="_blank" rel="noopener noreferrer">
         Next Practice Health
       </a>
     ),
@@ -75,11 +63,7 @@ const work = [
   {
     title: 'Frontend developer',
     subtitle: (
-      <a
-        href="https://nextpracticehealth.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://nextpracticehealth.com/" target="_blank" rel="noopener noreferrer">
         Koorong Books
       </a>
     ),
@@ -93,11 +77,7 @@ const projects = [
   {
     title: 'Realtime audio visualization',
     subtitle: (
-      <a
-        href="https://audio-ripple.firebaseapp.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://audio-ripple.firebaseapp.com/" target="_blank" rel="noopener noreferrer">
         Webaudio api
       </a>
     ),
@@ -111,10 +91,7 @@ const projects = [
         onClick={() =>
           MySwal.fire(
             <div>React native app on iOS/Android</div>,
-            <div
-              className="flex-row-images"
-              style={{ width: '100%', transform: 'scale(0.8)' }}
-            >
+            <div className="flex-row-images" style={{ width: '100%', transform: 'scale(0.8)' }}>
               <IPhone>
                 <img src={mm0} />
               </IPhone>
@@ -150,11 +127,7 @@ const achievements = [
   {
     title: 'First place security tournament',
     subtitle: (
-      <a
-        href="https://securecodewarrior.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://securecodewarrior.com/" target="_blank" rel="noopener noreferrer">
         Secure code warrior
       </a>
     ),
@@ -164,11 +137,7 @@ const achievements = [
   {
     title: 'First place IAG Hackathon',
     subtitle: (
-      <a
-        href="https://www.iag.com.au/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.iag.com.au/" target="_blank" rel="noopener noreferrer">
         Insurance Australia Group
       </a>
     ),
@@ -178,11 +147,7 @@ const achievements = [
   {
     title: 'First Clinic launched',
     subtitle: (
-      <a
-        href="https://nextpracticehealth.com/locations/wa-cloverdale"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://nextpracticehealth.com/locations/wa-cloverdale" target="_blank" rel="noopener noreferrer">
         Next Practice Health Cloverdale
       </a>
     ),

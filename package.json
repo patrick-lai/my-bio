@@ -28,7 +28,6 @@
     "react-dom": "^16.0.0",
     "react-icons": "^3.2.2",
     "react-spring": "^6.1.10",
-    "react-timeline-scribble": "^1.0.14",
     "react-vertical-timeline-component": "^2.3.1",
     "sweetalert2": "^7.29.2",
     "sweetalert2-react-content": "^1.0.1"
