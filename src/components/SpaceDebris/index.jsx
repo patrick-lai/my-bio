@@ -2,7 +2,7 @@
  * Bunch of debris to randomly render
  */
 
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import _values from 'lodash/values';
 import _sample from 'lodash/sample';
 import _rnd from 'lodash/random';
@@ -33,7 +33,10 @@ export default ({ delay = 100 }) => {
   }, []);
 
   // Initialize the state after some delay
-  useMemo(() => setTimeout(randomize, delay), []);
+  useEffect(() => {
+    const timeout = setTimeout(randomize, delay);
+    return () => clearTimeout(timeout);
+  }, []);
 
   if (!state) return null;
 

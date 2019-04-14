@@ -2,7 +2,7 @@
  * Entry page
  */
 
-import React, { useEffect, useCallback, useState, useMemo, useRef } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import _debounce from 'lodash/debounce';
 import { Parallax, ParallaxLayer } from 'react-spring/dist/addons';
@@ -32,58 +32,47 @@ const _determinePages = () => {
   }
 };
 
-// Performance reasons
 const determinePages = _debounce(_determinePages, 800);
 
-const App = () => {
-  const [state, setState] = useState({ pages: _determinePages() });
-  const updateDimensions = useCallback(() => setState({ pages: determinePages() }), []);
+class App extends React.PureComponent {
+  state = { pages: _determinePages() };
 
-  // Icons floating around
-  const debris = useMemo(
-    () => (
-      <React.Fragment>
-        <SpaceDebris delay={0} />
-        <SpaceDebris delay={200} />
-        <SpaceDebris delay={400} />
-        <SpaceDebris delay={600} />
-        <SpaceDebris delay={800} />
-      </React.Fragment>
-    ),
-    []
+  debris = (
+    <React.Fragment>
+      <SpaceDebris delay={0} />
+      <SpaceDebris delay={200} />
+      <SpaceDebris delay={400} />
+      <SpaceDebris delay={600} />
+      <SpaceDebris delay={800} />
+    </React.Fragment>
   );
 
   // The makeStars function does some randomization, we dont want to keep regenerating per render
-  const stars = useMemo(
-    () => ({
-      stars1: makeStars({ speed: 1 }),
-      stars2: makeStars({ speed: 2, style: { backgroundSize: '200%' } }),
-      stars3: makeStars({
-        speed: 5,
-        style: { backgroundSize: '500%', pointerEvents: 'none' }
-      })
-    }),
-    []
-  );
+  stars1 = makeStars({ speed: 1 });
+  stars2 = makeStars({ speed: 2, style: { backgroundSize: '200%' } });
+  stars3 = makeStars({
+    speed: 5,
+    style: { backgroundSize: '500%', pointerEvents: 'none' }
+  });
 
-  let parallaxRef = useRef(null);
-
-  useEffect(() => {
+  componentDidMount = () => {
     determinePages();
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize');
-  }, []);
+    window.addEventListener('resize', this.updateDimensions);
+  };
 
-  return (
-    <Parallax ref={ref => (parallaxRef = ref)} pages={state.pages} config={config.molasses} style={BG_STYLES}>
+  // Depends on screen ratio
+  updateDimensions = () => this.setState({ pages: determinePages() });
+
+  render = () => (
+    <Parallax ref={ref => (this.parallax = ref)} pages={this.state.pages} config={config.molasses} style={BG_STYLES}>
       {/* Main gradient background*/}
-      <ParallaxLayer speed={0} factor={state.pages} style={BG_STYLES}>
-        {debris}
+      <ParallaxLayer speed={0} factor={this.state.pages} style={BG_STYLES}>
+        {this.debris}
       </ParallaxLayer>
 
       {/* Parallaxed Stars in the background */}
-      {stars.stars1}
-      {stars.stars2}
+      {this.stars1}
+      {this.stars2}
 
       {/* Content */}
       <ParallaxLayer>
@@ -109,9 +98,9 @@ const App = () => {
       </ParallaxLayer>
 
       {/* Adding some foreground for immersive feel */}
-      {/* {stars.stars3} */}
+      {/* {this.stars3} */}
     </Parallax>
   );
-};
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
