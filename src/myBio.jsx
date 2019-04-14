@@ -145,6 +145,16 @@ const achievements = [
     monogram: getUrl(iagLogo)
   },
   {
+    title: 'Mensa Membership',
+    subtitle: (
+      <a href="https://www.mensa.org.au/" target="_blank" rel="noopener noreferrer">
+        Australian Mensa Group
+      </a>
+    ),
+    from: dayjs('2018-08'),
+    monogram: getUrl(nphLogo)
+  },
+  {
     title: 'First Clinic launched',
     subtitle: (
       <a href="https://nextpracticehealth.com/locations/wa-cloverdale" target="_blank" rel="noopener noreferrer">
