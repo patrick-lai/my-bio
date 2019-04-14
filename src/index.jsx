@@ -16,7 +16,7 @@ import { FaGithub } from 'react-icons/fa';
 import { IoMdMail } from 'react-icons/io';
 
 const BG_STYLES = {
-  background: `radial-gradient(circle at center, #0f2027, #274e60, #0f2027) 0 0 / 120%`
+  background: `radial-gradient(circle at center, #0f2027, #274e60, #0f2027) 0 0 / 120%`,
 };
 
 // Magic number seems to work
@@ -28,7 +28,7 @@ const _determinePages = () => {
     if (clientWidth > 768) return 3;
     if (clientHeight / clientWidth > 0.7) return 3;
     return 4;
-  } catch {
+  } catch (e) {
     return 3;
   }
 };
@@ -51,7 +51,10 @@ class App extends React.PureComponent {
   // The makeStars function does some randomization, we dont want to keep regenerating per render
   stars1 = makeStars({ speed: 1 });
   stars2 = makeStars({ speed: 2, style: { backgroundSize: '200%' } });
-  stars3 = makeStars({ speed: 5, style: { backgroundSize: '500%', pointerEvents: 'none' } });
+  stars3 = makeStars({
+    speed: 5,
+    style: { backgroundSize: '500%', pointerEvents: 'none' },
+  });
 
   componentDidMount = () => {
     determinePages();
