@@ -64,7 +64,7 @@ const work = [
   {
     title: 'Frontend developer',
     subtitle: (
-      <a href="https://nextpracticehealth.com/" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.koorong.com/" target="_blank" rel="noopener noreferrer">
         Koorong Books
       </a>
     ),
@@ -118,7 +118,7 @@ const projects = [
   },
   {
     title: 'iPhone sniper',
-    subtitle: 'Notification service',
+    subtitle: 'Just SMSed me when the iphone was in stock',
     from: dayjs('2017-08'),
     monogram: getUrl(nodeLogo)
   }

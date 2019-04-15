@@ -48,6 +48,12 @@ const App = () => {
         <SpaceDebris delay={400} />
         <SpaceDebris delay={600} />
         <SpaceDebris delay={800} />
+        <SpaceDebris delay={1000} />
+        <SpaceDebris delay={1200} />
+        <SpaceDebris delay={1400} />
+        <SpaceDebris delay={1600} />
+        <SpaceDebris delay={1800} />
+        <SpaceDebris delay={2000} />
       </React.Fragment>
     ),
     []

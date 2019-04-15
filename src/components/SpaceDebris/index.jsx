@@ -25,10 +25,10 @@ export default ({ delay = 100 }) => {
       to: { left: X[key1][1], top: _rnd(-120, 120), rotation: _rnd(-60, 60) },
       config: {
         tension: _rnd(0.01, 0.1),
-        friction: _rnd(0, 0.1),
+        friction: _rnd(0.1, 0.2),
         clamp: true
       },
-      fontSize: _rnd(60, 120),
+      fontSize: _rnd(20, 60),
       color: icon.color || '#FFFFFF',
       Icon: icon
     });
