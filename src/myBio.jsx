@@ -8,6 +8,7 @@ import React from 'react';
 import dayjs from 'dayjs'; // Moment waaay tooo big
 import { setItemsType, getUrl } from './_helpers';
 import IPhone from './components/iPhone';
+import Browser from './components/Browser';
 
 // Logos
 import iagLogo from './assets/iag-logo.jpg';
@@ -27,47 +28,46 @@ import mm3 from './assets/mangoManga/3.jpg';
 
 const MySwal = withReactContent(Swal);
 
+const IframeLink = ({ href, children }) => (
+  <a
+    onClick={() =>
+      MySwal.fire(
+        <Browser url={href}>
+          {/* By pass x-frame-options, https://github.com/niutech/x-frame-bypass */}
+          <iframe is="x-frame-bypass" src={href} />
+        </Browser>
+      )
+    }
+  >
+    {children}
+  </a>
+);
+
 const work = [
   {
     title: 'Senior developer',
-    subtitle: (
-      <a href="https://www.iag.com.au/" target="_blank" rel="noopener noreferrer">
-        Insurance Australia Group
-      </a>
-    ),
+    subtitle: <IframeLink href="https://www.iag.com.au/">Insurance Australia Group</IframeLink>,
     from: dayjs('2018-05'),
     to: 'present',
     monogram: getUrl(iagLogo)
   },
   {
     title: 'Technical lead',
-    subtitle: (
-      <a href="https://nextpracticehealth.com/become-a-partner" target="_blank" rel="noopener noreferrer">
-        Next Practice Health
-      </a>
-    ),
+    subtitle: <IframeLink href="https://nextpracticehealth.com/become-a-partner">Next Practice Health</IframeLink>,
     from: dayjs('2017-11'),
     to: dayjs('2018-05'),
     monogram: getUrl(nphLogo)
   },
   {
     title: 'Full stack developer',
-    subtitle: (
-      <a href="https://nextpracticehealth.com/become-a-partner" target="_blank" rel="noopener noreferrer">
-        Next Practice Health
-      </a>
-    ),
+    subtitle: <IframeLink href="https://nextpracticehealth.com/become-a-partner">Next Practice Health</IframeLink>,
     from: dayjs('2016-01'),
     to: dayjs('2018-05'),
     monogram: getUrl(nphLogo)
   },
   {
     title: 'Frontend developer',
-    subtitle: (
-      <a href="https://www.koorong.com/" target="_blank" rel="noopener noreferrer">
-        Koorong Books
-      </a>
-    ),
+    subtitle: <IframeLink href="https://www.koorong.com/">Koorong Books</IframeLink>,
     from: dayjs('2013-04'),
     to: dayjs('2015-12'),
     monogram: getUrl(koorongLogo)
@@ -78,7 +78,7 @@ const projects = [
   {
     title: 'Realtime audio visualization',
     subtitle: (
-      <a href="https://audio-ripple.firebaseapp.com/" target="_blank" rel="noopener noreferrer">
+      <a href="https://audio-ripple.firebaseapp.com/" target="_blank">
         Webaudio api
       </a>
     ),
@@ -127,40 +127,28 @@ const projects = [
 const achievements = [
   {
     title: 'First place security tournament',
-    subtitle: (
-      <a href="https://securecodewarrior.com/" target="_blank" rel="noopener noreferrer">
-        Secure code warrior
-      </a>
-    ),
+    subtitle: <IframeLink href="https://securecodewarrior.com/">Secure code warrior</IframeLink>,
     from: dayjs('2018-06'),
     monogram: getUrl(secureWarriorLogo)
   },
   {
     title: 'First place IAG Hackathon',
-    subtitle: (
-      <a href="https://www.iag.com.au/" target="_blank" rel="noopener noreferrer">
-        Insurance Australia Group
-      </a>
-    ),
+    subtitle: <IframeLink href="https://www.iag.com.au/">Insurance Australia Group</IframeLink>,
     from: dayjs('2018-07'),
     monogram: getUrl(iagLogo)
   },
   {
     title: 'Mensa Membership',
-    subtitle: (
-      <a href="https://www.mensa.org.au/" target="_blank" rel="noopener noreferrer">
-        Australian Mensa Group
-      </a>
-    ),
+    subtitle: <IframeLink href="https://www.mensa.org.au/">Australian Mensa Group</IframeLink>,
     from: dayjs('2018-08'),
     monogram: getUrl(mensaLogo)
   },
   {
     title: 'First Clinic launched',
     subtitle: (
-      <a href="https://nextpracticehealth.com/locations/wa-cloverdale" target="_blank" rel="noopener noreferrer">
+      <IframeLink href="https://nextpracticehealth.com/locations/wa-cloverdale">
         Next Practice Health Cloverdale
-      </a>
+      </IframeLink>
     ),
     from: dayjs('2018-03'),
     monogram: getUrl(nphLogo)
