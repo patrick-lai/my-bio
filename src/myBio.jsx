@@ -91,7 +91,7 @@ const projects = [
       <a
         onClick={() =>
           MySwal.fire(
-            <div>React native app on iOS/Android</div>,
+            <h3 style={{ color: 'white' }}>React native app on iOS/Android</h3>,
             <div className="flex-row-images" style={{ width: '100%', transform: 'scale(0.8)' }}>
               <IPhone>
                 <img src={mm0} />

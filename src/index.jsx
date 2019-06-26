@@ -39,26 +39,6 @@ const App = () => {
   const [state, setState] = useState({ pages: _determinePages() });
   const updateDimensions = useCallback(() => setState({ pages: determinePages() }), []);
 
-  // Icons floating around
-  const debris = useMemo(
-    () => (
-      <React.Fragment>
-        <SpaceDebris delay={0} />
-        <SpaceDebris delay={200} />
-        <SpaceDebris delay={400} />
-        <SpaceDebris delay={600} />
-        <SpaceDebris delay={800} />
-        <SpaceDebris delay={1000} />
-        <SpaceDebris delay={1200} />
-        <SpaceDebris delay={1400} />
-        <SpaceDebris delay={1600} />
-        <SpaceDebris delay={1800} />
-        <SpaceDebris delay={2000} />
-      </React.Fragment>
-    ),
-    []
-  );
-
   // The makeStars function does some randomization, we dont want to keep regenerating per render
   const stars = useMemo(
     () => ({
@@ -83,9 +63,6 @@ const App = () => {
   return (
     <Parallax ref={ref => (parallaxRef = ref)} pages={state.pages} config={config.molasses} style={BG_STYLES}>
       {/* Main gradient background*/}
-      <ParallaxLayer speed={0} factor={state.pages} style={BG_STYLES}>
-        {debris}
-      </ParallaxLayer>
 
       {/* Parallaxed Stars in the background */}
       {stars.stars1}

@@ -7,6 +7,7 @@ import React from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import { FaBeer } from 'react-icons/fa';
 import { getUrl } from '../../_helpers';
+import Atv from '../Atv';
 
 const Monogram = ({ backgroundImage, children }) => (
   <div className="monogram-bg">
@@ -28,13 +29,15 @@ const makeElement = ({ title, subtitle, content, from, to, icon = {}, monogram }
       .join(' - ')}
     {...icon}
   >
-    <div className="item-content">
+    <Atv style={{ width: 468, height: 190 }}>
       <Monogram backgroundImage={monogram}>
-        <h3 className="vertical-timeline-element-title">{title}</h3>
-        <h4 className="vertical-timeline-element-subtitle">{subtitle}</h4>
-        <div>{content}</div>
+        <div className="item-content">
+          <h3 className="vertical-timeline-element-title">{title}</h3>
+          <h4 className="vertical-timeline-element-subtitle">{subtitle}</h4>
+          <div>{content}</div>
+        </div>
       </Monogram>
-    </div>
+    </Atv>
   </VerticalTimelineElement>
 );
 
