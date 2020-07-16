@@ -22,7 +22,7 @@
   "dependencies": {
     "create-react-class": "^15.6.3",
     "dayjs": "^1.7.7",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
     "react": "^16.0.0",
