@@ -49,41 +49,41 @@ const work = [
     subtitle: <IframeLink href="https://www.iag.com.au/">Insurance Australia Group</IframeLink>,
     from: dayjs('2018-05'),
     to: 'present',
-    monogram: getUrl(iagLogo)
+    monogram: getUrl(iagLogo),
   },
   {
     title: 'Technical lead',
     subtitle: <IframeLink href="https://nextpracticehealth.com/become-a-partner">Next Practice Health</IframeLink>,
     from: dayjs('2017-11'),
     to: dayjs('2018-05'),
-    monogram: getUrl(nphLogo)
+    monogram: getUrl(nphLogo),
   },
   {
     title: 'Full stack developer',
     subtitle: <IframeLink href="https://nextpracticehealth.com/become-a-partner">Next Practice Health</IframeLink>,
     from: dayjs('2016-01'),
     to: dayjs('2018-05'),
-    monogram: getUrl(nphLogo)
+    monogram: getUrl(nphLogo),
   },
   {
     title: 'Frontend developer',
     subtitle: <IframeLink href="https://www.koorong.com/">Koorong Books</IframeLink>,
     from: dayjs('2013-04'),
     to: dayjs('2015-12'),
-    monogram: getUrl(koorongLogo)
-  }
+    monogram: getUrl(koorongLogo),
+  },
 ];
 
 const projects = [
   {
     title: 'Realtime audio visualization',
     subtitle: (
-      <a href="https://audio-ripple.firebaseapp.com/" target="_blank">
+      <a href="http://chill-tones.surge.sh/" target="_blank">
         Webaudio api
       </a>
     ),
     from: dayjs('2016-02'),
-    monogram: getUrl(reactLogo)
+    monogram: getUrl(reactLogo),
   },
   {
     title: 'Mobile manga reader',
@@ -114,14 +114,14 @@ const projects = [
       </a>
     ),
     from: dayjs('2018-06'),
-    monogram: getUrl(reactNativeLogo)
+    monogram: getUrl(reactNativeLogo),
   },
   {
     title: 'iPhone sniper',
     subtitle: 'Just SMSed me when the iphone was in stock',
     from: dayjs('2017-08'),
-    monogram: getUrl(nodeLogo)
-  }
+    monogram: getUrl(nodeLogo),
+  },
 ];
 
 const achievements = [
@@ -129,19 +129,19 @@ const achievements = [
     title: 'First place security tournament',
     subtitle: <IframeLink href="https://securecodewarrior.com/">Secure code warrior</IframeLink>,
     from: dayjs('2018-06'),
-    monogram: getUrl(secureWarriorLogo)
+    monogram: getUrl(secureWarriorLogo),
   },
   {
     title: 'First place IAG Hackathon',
     subtitle: <IframeLink href="https://www.iag.com.au/">Insurance Australia Group</IframeLink>,
     from: dayjs('2018-07'),
-    monogram: getUrl(iagLogo)
+    monogram: getUrl(iagLogo),
   },
   {
     title: 'Mensa Membership',
     subtitle: <IframeLink href="https://www.mensa.org.au/">Australian Mensa Group</IframeLink>,
     from: dayjs('2018-08'),
-    monogram: getUrl(mensaLogo)
+    monogram: getUrl(mensaLogo),
   },
   {
     title: 'First Clinic launched',
@@ -151,14 +151,14 @@ const achievements = [
       </IframeLink>
     ),
     from: dayjs('2018-03'),
-    monogram: getUrl(nphLogo)
-  }
+    monogram: getUrl(nphLogo),
+  },
 ];
 
 export default [
   ...setItemsType('work')(work),
   ...setItemsType('project')(projects),
-  ...setItemsType('achievement')(achievements)
+  ...setItemsType('achievement')(achievements),
 ].sort((a, b) => {
   const isBefore = b.from.isBefore(a.from);
   return isBefore ? -1 : 1;
