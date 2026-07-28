@@ -1,1 +1,143 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Patrick's bio</title><link rel="stylesheet" type="text/css" href="bulma.efbcedf6.css"><link rel="stylesheet" type="text/css" href="global.98c1757a.css"><link rel="stylesheet" type="text/css" href="timeline.e515dc8c.css"><link rel="stylesheet" type="text/css" href="iPhoneX.cb50f0db.css"><link rel="stylesheet" href="src.38bd294a.css"></head><body> <noscript> Its 2019 (or later). Why you don't have JS? </noscript> <div id="root"></div> <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script> <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script> <script type="module" src="https://unpkg.com/x-frame-bypass"></script> <script src="src.fd35c7e2.js"></script> </body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Patrick Lai is a full stack engineer focused on polished product experiences across web, mobile, and internal tools."
+    />
+    <title>Patrick Lai — Full stack engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./app.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar" aria-label="Primary">
+          <span class="brand">Patrick Lai</span>
+          <div class="topbar-links">
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="mailto:mrphlai@gmail.com">Email</a>
+            <a href="https://github.com/patrick-lai" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </nav>
+
+        <div class="hero-content">
+          <p class="eyebrow">Full stack engineer</p>
+          <h1>I build polished software that feels clear, useful, and ready to ship.</h1>
+          <p class="hero-copy">
+            I work across frontend, backend, and product delivery with a strong bias for thoughtful UX, practical
+            engineering, and momentum.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:mrphlai@gmail.com">Start a conversation</a>
+            <a class="button button-secondary" href="#experience">Explore experience</a>
+          </div>
+
+          <div class="hero-pills" aria-label="Core strengths">
+            <span>React</span>
+            <span>React Native</span>
+            <span>Node.js</span>
+            <span>Design systems</span>
+            <span>Product thinking</span>
+            <span>Delivery leadership</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="section stats-section" aria-labelledby="quick-scan-title">
+          <div class="section-heading">
+            <p class="eyebrow">Quick scan</p>
+            <h2 id="quick-scan-title">A better first impression than a wall of timeline cards.</h2>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <p class="stat-label">Experience</p>
+              <h3>10+ years</h3>
+              <p>Frontend, full stack, and technical leadership across product teams.</p>
+            </article>
+            <article class="stat-card">
+              <p class="stat-label">Strength</p>
+              <h3>UX that converts</h3>
+              <p>Clear flows, practical interactions, and thoughtful polish without slowing delivery.</p>
+            </article>
+            <article class="stat-card">
+              <p class="stat-label">Industries</p>
+              <h3>Insurance, health, ecommerce</h3>
+              <p>Consumer products and internal platforms with real operational complexity.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="experience" aria-labelledby="experience-title">
+          <div class="section-heading section-heading-row">
+            <div>
+              <p class="eyebrow">Selected experience</p>
+              <h2 id="experience-title">Career highlights, side projects, and a few wins.</h2>
+            </div>
+            <p class="section-copy">I reorganized the site around fast scanning, stronger storytelling, and clearer calls to action.</p>
+          </div>
+
+          <div class="filter-bar" role="toolbar" aria-label="Filter timeline items">
+            <button class="filter-chip is-active" type="button" data-filter="all">All</button>
+            <button class="filter-chip" type="button" data-filter="work">Work</button>
+            <button class="filter-chip" type="button" data-filter="project">Projects</button>
+            <button class="filter-chip" type="button" data-filter="achievement">Achievements</button>
+          </div>
+
+          <p class="results-meta" id="results-meta"></p>
+          <div class="timeline" id="timeline" aria-live="polite"></div>
+        </section>
+
+        <section class="section" id="projects" aria-labelledby="project-preview-title">
+          <div class="section-heading">
+            <p class="eyebrow">Featured preview</p>
+            <h2 id="project-preview-title">One project worth opening instead of hiding behind a modal.</h2>
+          </div>
+
+          <div class="project-feature">
+            <div class="project-copy">
+              <span class="type-badge type-project">Project</span>
+              <h3>Mobile manga reader</h3>
+              <p>
+                The original site buried this behind an interaction users had to discover. I pulled it forward so visitors
+                can immediately see a tangible product example.
+              </p>
+              <ul>
+                <li>Built for comfortable reading and quick browsing on mobile.</li>
+                <li>Designed around repeat engagement rather than a one-off demo.</li>
+                <li>Shows product thinking, not just code samples.</li>
+              </ul>
+            </div>
+            <div class="phone-gallery" aria-label="Mobile manga reader screenshots">
+              <img src="./0.209309e5.jpg" alt="Manga reader library view" />
+              <img src="./1.f624c718.jpg" alt="Manga reader discovery view" />
+              <img src="./2.93599228.jpg" alt="Manga reader reading view" />
+              <img src="./3.0c904d8b.jpg" alt="Manga reader settings view" />
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Want someone who can shape the UX and still ship the implementation?</p>
+        <div class="footer-actions">
+          <a class="button button-primary" href="mailto:mrphlai@gmail.com">Email Patrick</a>
+          <a class="button button-secondary" href="https://github.com/patrick-lai" target="_blank" rel="noreferrer">View GitHub</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
