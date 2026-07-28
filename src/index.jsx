@@ -2,9 +2,8 @@
  * Entry page
  */
 
-import React, { useEffect, useCallback, useState, useMemo, useRef } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import _debounce from 'lodash/debounce';
 import { Parallax, ParallaxLayer } from 'react-spring/dist/addons';
 import { config } from 'react-spring';
 import { makeStars } from './_helpers';
@@ -30,8 +29,7 @@ const TYPE_COPY = {
   achievement: 'Highlights outside day-to-day delivery'
 };
 
-// Magic number seems to work
-const _determinePages = () => {
+const determinePages = () => {
   try {
     const { clientWidth, clientHeight } = document.documentElement;
     if (clientWidth > 768) return 3;
@@ -42,21 +40,11 @@ const _determinePages = () => {
   }
 };
 
-// Performance reasons
-const determinePages = _debounce(_determinePages, 800);
-
 const App = () => {
-  const [pages, setPages] = useState(_determinePages());
+  const [pages, setPages] = useState(determinePages());
   const [activeFilter, setActiveFilter] = useState('all');
   const parallaxRef = useRef(null);
 
-  const updateDimensions = useCallback(() => {
-    determinePages.cancel();
-    determinePages(() => {});
-    setPages(_determinePages());
-  }, []);
-
-  // The makeStars function does some randomization, we dont want to keep regenerating per render
   const stars = useMemo(
     () => ({
       stars1: makeStars({ speed: 1 }),
@@ -83,7 +71,7 @@ const App = () => {
   }, [activeFilter]);
 
   useEffect(() => {
-    const onResize = () => setPages(_determinePages());
+    const onResize = () => setPages(determinePages());
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
@@ -108,7 +96,12 @@ const App = () => {
                 <IoMdMail />
                 <span>Email Patrick</span>
               </a>
-              <a className="action-button secondary" href="https://github.com/patrick-lai" target="_blank" rel="noopener noreferrer">
+              <a
+                className="action-button secondary"
+                href="https://github.com/patrick-lai"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaGithub />
                 <span>View GitHub</span>
               </a>
@@ -167,7 +160,6 @@ const App = () => {
 
           <Timeline
             items={filteredItems}
-            activeFilter={activeFilter}
             title={activeFilter === 'all' ? 'Everything in one view' : TYPE_COPY[activeFilter]}
           />
         </section>
