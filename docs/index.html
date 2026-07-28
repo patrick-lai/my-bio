@@ -1,1 +1,779 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Patrick's bio</title><link rel="stylesheet" type="text/css" href="bulma.efbcedf6.css"><link rel="stylesheet" type="text/css" href="global.98c1757a.css"><link rel="stylesheet" type="text/css" href="timeline.e515dc8c.css"><link rel="stylesheet" type="text/css" href="iPhoneX.cb50f0db.css"><link rel="stylesheet" href="src.38bd294a.css"></head><body> <noscript> Its 2019 (or later). Why you don't have JS? </noscript> <div id="root"></div> <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script> <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script> <script type="module" src="https://unpkg.com/x-frame-bypass"></script> <script src="src.fd35c7e2.js"></script> </body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Patrick Lai — full stack engineer focused on frontend experience, product delivery, and shipping useful software."
+    />
+    <title>Patrick Lai | Full stack engineer</title>
+    <style>
+      :root {
+        --bg: #07111f;
+        --bg-elevated: rgba(12, 24, 42, 0.84);
+        --panel: rgba(255, 255, 255, 0.08);
+        --panel-strong: rgba(255, 255, 255, 0.14);
+        --border: rgba(255, 255, 255, 0.12);
+        --text: #f4f7fb;
+        --muted: #aab7cc;
+        --accent: #66e3c4;
+        --accent-2: #8bb8ff;
+        --highlight: #ffd166;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+        --radius: 24px;
+        --max-width: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(102, 227, 196, 0.22), transparent 24%),
+          radial-gradient(circle at 80% 20%, rgba(139, 184, 255, 0.16), transparent 22%),
+          linear-gradient(180deg, #09111f 0%, #07111f 45%, #030712 100%);
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          radial-gradient(circle at 20% 20%, rgba(255,255,255,0.18) 0 1px, transparent 1px),
+          radial-gradient(circle at 80% 30%, rgba(255,255,255,0.2) 0 1px, transparent 1px),
+          radial-gradient(circle at 40% 80%, rgba(255,255,255,0.12) 0 1px, transparent 1px);
+        background-size: 180px 180px, 240px 240px, 320px 320px;
+        opacity: 0.35;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        position: relative;
+        z-index: 1;
+        width: min(calc(100% - 32px), var(--max-width));
+        margin: 0 auto;
+        padding: 24px 0 80px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.3fr 0.9fr;
+        gap: 24px;
+        align-items: stretch;
+        padding: 48px 0 28px;
+      }
+
+      .hero-card,
+      .panel {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+        border-radius: var(--radius);
+      }
+
+      .hero-card {
+        padding: 36px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(102, 227, 196, 0.12);
+        border: 1px solid rgba(102, 227, 196, 0.2);
+        color: var(--accent);
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 6vw, 4.7rem);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+        margin-bottom: 16px;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.75;
+        max-width: 58ch;
+        margin-bottom: 28px;
+      }
+
+      .cta-row,
+      .pill-row,
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .button,
+      .filter-button {
+        appearance: none;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+      }
+
+      .button {
+        padding: 13px 18px;
+        font-weight: 600;
+      }
+
+      .button:hover,
+      .filter-button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--accent), #9cf4de);
+        color: #052133;
+      }
+
+      .button.secondary {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--border);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .spotlight {
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .spotlight-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .metric {
+        padding: 16px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 1.7rem;
+        margin-bottom: 6px;
+      }
+
+      .metric span,
+      .muted {
+        color: var(--muted);
+      }
+
+      .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 16px;
+        margin: 24px 0 18px;
+      }
+
+      .section-heading p {
+        color: var(--muted);
+        max-width: 58ch;
+        margin-bottom: 0;
+      }
+
+      .panel {
+        padding: 24px;
+      }
+
+      .filters {
+        margin: 18px 0 14px;
+      }
+
+      .filter-button {
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--muted);
+        border-color: rgba(255, 255, 255, 0.08);
+        font-weight: 600;
+      }
+
+      .filter-button.active {
+        background: rgba(102, 227, 196, 0.14);
+        color: var(--text);
+        border-color: rgba(102, 227, 196, 0.3);
+      }
+
+      .timeline {
+        position: relative;
+        margin-top: 24px;
+        padding-left: 28px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 4px;
+        bottom: 4px;
+        width: 2px;
+        background: linear-gradient(180deg, rgba(102, 227, 196, 0.8), rgba(139, 184, 255, 0.1));
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 18px;
+        display: block;
+      }
+
+      .timeline-item[hidden] {
+        display: none;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -23px;
+        top: 24px;
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 6px rgba(102, 227, 196, 0.12);
+      }
+
+      .timeline-card {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 18px;
+        padding: 22px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+      }
+
+      .timeline-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(139, 184, 255, 0.26);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .logo {
+        width: 64px;
+        height: 64px;
+        border-radius: 18px;
+        object-fit: cover;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .timeline-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: start;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .timeline-title {
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+      }
+
+      .timeline-company {
+        color: var(--accent-2);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .timeline-company:hover {
+        color: #bcd4ff;
+      }
+
+      .timeline-date {
+        color: var(--muted);
+        white-space: nowrap;
+        font-size: 0.95rem;
+      }
+
+      .timeline-copy {
+        color: #d5e0f0;
+        line-height: 1.65;
+        margin-bottom: 14px;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag {
+        padding: 8px 11px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .gallery-button {
+        margin-top: 14px;
+        padding: 0;
+        background: none;
+        border: 0;
+        color: var(--highlight);
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .empty-state {
+        display: none;
+        margin-top: 20px;
+        padding: 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        border: 1px dashed rgba(255, 255, 255, 0.12);
+      }
+
+      dialog {
+        width: min(960px, calc(100vw - 24px));
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 24px;
+        padding: 0;
+        background: #081221;
+        color: var(--text);
+        box-shadow: var(--shadow);
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.72);
+      }
+
+      .dialog-shell {
+        padding: 24px;
+      }
+
+      .dialog-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .close-button {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .gallery-grid img {
+        width: 100%;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      footer {
+        margin-top: 24px;
+        color: var(--muted);
+        text-align: center;
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 920px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .spotlight-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .shell {
+          width: min(calc(100% - 20px), var(--max-width));
+          padding-top: 12px;
+        }
+
+        .hero-card,
+        .panel,
+        .spotlight {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        .timeline {
+          padding-left: 22px;
+        }
+
+        .timeline-item::before {
+          left: -17px;
+        }
+
+        .timeline-card {
+          grid-template-columns: 1fr;
+        }
+
+        .spotlight-grid,
+        .gallery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-card">
+          <div class="eyebrow">Patrick Lai · Sydney</div>
+          <h1>Full stack engineer who turns ideas into products people actually use.</h1>
+          <p class="lead">
+            This site now leans into what a visitor wants from a personal profile: a fast read on strengths,
+            proof of shipped work, and a cleaner way to explore projects, work history, and achievements.
+          </p>
+          <div class="cta-row">
+            <a class="button primary" href="mailto:mrphlai@gmail.com">Get in touch</a>
+            <a class="button secondary" href="https://github.com/patrick-lai" target="_blank" rel="noreferrer">View GitHub</a>
+            <a class="button secondary" href="#timeline">Browse experience</a>
+          </div>
+          <div class="pill-row" style="margin-top: 22px;">
+            <span class="pill">Frontend UX</span>
+            <span class="pill">React & React Native</span>
+            <span class="pill">Product-minded delivery</span>
+          </div>
+        </div>
+
+        <aside class="hero-card spotlight">
+          <div>
+            <h2 style="margin-bottom: 8px;">At a glance</h2>
+            <p class="muted">
+              The original timeline had good personality but made visitors hunt for the signal. This refresh surfaces the headline story first.
+            </p>
+          </div>
+          <div class="spotlight-grid">
+            <div class="metric">
+              <strong>10+</strong>
+              <span>years across frontend and full stack roles</span>
+            </div>
+            <div class="metric">
+              <strong>3</strong>
+              <span>project types to explore with filters</span>
+            </div>
+            <div class="metric">
+              <strong>4</strong>
+              <span>highlighted roles and shipped products</span>
+            </div>
+            <div class="metric">
+              <strong>1</strong>
+              <span>clear path to reach out or review work</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="panel" id="timeline">
+        <div class="section-heading">
+          <div>
+            <h2 style="margin-bottom: 8px;">Experience timeline</h2>
+            <p>
+              Filter the timeline by what you care about. Recruiters can scan work history, while peers can jump straight to projects and technical wins.
+            </p>
+          </div>
+          <p id="result-count" class="muted">11 entries</p>
+        </div>
+
+        <div class="filters" role="tablist" aria-label="Filter timeline entries">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="work">Work</button>
+          <button class="filter-button" type="button" data-filter="project">Projects</button>
+          <button class="filter-button" type="button" data-filter="achievement">Achievements</button>
+        </div>
+
+        <div class="timeline" id="timeline-list"></div>
+        <div class="empty-state" id="empty-state">No entries in this filter yet.</div>
+      </section>
+
+      <footer>Made easier to scan, easier to trust, and easier to act on.</footer>
+    </main>
+
+    <dialog id="gallery-dialog" aria-labelledby="gallery-title">
+      <div class="dialog-shell">
+        <div class="dialog-head">
+          <div>
+            <h3 id="gallery-title" style="margin-bottom: 6px;">Mobile manga reader</h3>
+            <p class="muted" style="margin: 0;">React Native concept screenshots.</p>
+          </div>
+          <button class="close-button" type="button" aria-label="Close gallery">✕</button>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </div>
+    </dialog>
+
+    <script>
+      const entries = [
+        {
+          type: 'work',
+          title: 'Senior developer',
+          company: 'Insurance Australia Group',
+          href: 'https://www.iag.com.au/',
+          date: 'May 2018 — Present',
+          image: './iag-logo.5329770d.jpg',
+          summary:
+            'Leading delivery across production software with a strong frontend lens, balancing implementation quality with the experience people get on the other side of the screen.',
+          tags: ['React', 'Product delivery', 'Frontend architecture']
+        },
+        {
+          type: 'achievement',
+          title: 'First place IAG Hackathon',
+          company: 'Insurance Australia Group',
+          href: 'https://www.iag.com.au/',
+          date: 'July 2018',
+          image: './iag-logo.5329770d.jpg',
+          summary:
+            'A useful signal that Patrick can move quickly from idea to working prototype under pressure.',
+          tags: ['Rapid prototyping', 'Collaboration', 'Delivery']
+        },
+        {
+          type: 'achievement',
+          title: 'Mensa membership',
+          company: 'Australian Mensa',
+          href: 'https://www.mensa.org.au/',
+          date: 'August 2018',
+          image: './mensa-logo.8a49584a.png',
+          summary:
+            'Included as a personality signal, but kept in the timeline rather than the hero so it supports the profile instead of competing with the work.',
+          tags: ['Personal milestone']
+        },
+        {
+          type: 'project',
+          title: 'Mobile manga reader',
+          company: 'React Native',
+          href: '',
+          date: 'June 2018',
+          image: './react-native-logo.757b46eb.png',
+          summary:
+            'A mobile reading concept focused on browsing and consuming manga on iOS and Android, now with a lightweight screenshot gallery instead of a blocking pop-up flow.',
+          tags: ['React Native', 'Mobile UX', 'Side project'],
+          gallery: ['./0.209309e5.jpg', './1.f624c718.jpg', './2.93599228.jpg', './3.0c904d8b.jpg']
+        },
+        {
+          type: 'achievement',
+          title: 'First place security tournament',
+          company: 'Secure Code Warrior',
+          href: 'https://securecodewarrior.com/',
+          date: 'June 2018',
+          image: './secure-warrior-logo.f15d34cf.jpeg',
+          summary:
+            'Demonstrates comfort with secure engineering practices and problem-solving beyond the happy path.',
+          tags: ['Security', 'Problem solving']
+        },
+        {
+          type: 'achievement',
+          title: 'First clinic launched',
+          company: 'Next Practice Health Cloverdale',
+          href: 'https://nextpracticehealth.com/locations/wa-cloverdale',
+          date: 'March 2018',
+          image: './nph-logo.1e47c19f.jpeg',
+          summary:
+            'A strong outcome-oriented milestone: software work tied to an actual business launch.',
+          tags: ['Launch', 'Execution', 'Health tech']
+        },
+        {
+          type: 'work',
+          title: 'Technical lead',
+          company: 'Next Practice Health',
+          href: 'https://nextpracticehealth.com/become-a-partner',
+          date: 'November 2017 — May 2018',
+          image: './nph-logo.1e47c19f.jpeg',
+          summary:
+            'Oversaw product delivery in a growing health-tech setting, likely spanning hands-on engineering and coordination with broader business goals.',
+          tags: ['Leadership', 'Health tech', 'Delivery']
+        },
+        {
+          type: 'project',
+          title: 'iPhone sniper',
+          company: 'Node.js',
+          href: '',
+          date: 'August 2017',
+          image: './node-logo.c9756c9d.png',
+          summary:
+            'A playful automation tool that watched stock availability and sent an SMS alert — short on polish, high on utility.',
+          tags: ['Automation', 'Node.js', 'Utility build']
+        },
+        {
+          type: 'work',
+          title: 'Full stack developer',
+          company: 'Next Practice Health',
+          href: 'https://nextpracticehealth.com/become-a-partner',
+          date: 'January 2016 — May 2018',
+          image: './nph-logo.1e47c19f.jpeg',
+          summary:
+            'Built across the stack in a product environment where software had to support both patient experience and internal operations.',
+          tags: ['Full stack', 'React', 'Product development']
+        },
+        {
+          type: 'project',
+          title: 'Realtime audio visualization',
+          company: 'Web Audio API',
+          href: 'http://chill-tones.surge.sh/',
+          date: 'February 2016',
+          image: './react-logo.ce766d25.png',
+          summary:
+            'An interactive browser experiment showing technical curiosity and comfort with media-heavy frontends.',
+          tags: ['Web Audio API', 'Frontend experiments', 'Creative coding']
+        },
+        {
+          type: 'work',
+          title: 'Frontend developer',
+          company: 'Koorong Books',
+          href: 'https://www.koorong.com/',
+          date: 'April 2013 — December 2015',
+          image: './koorong-logo.b765c55f.jpeg',
+          summary:
+            'Early commercial frontend work building foundations in interface development, browser behaviour, and practical delivery.',
+          tags: ['Frontend', 'E-commerce', 'UI foundations']
+        }
+      ];
+
+      const timelineList = document.getElementById('timeline-list');
+      const resultCount = document.getElementById('result-count');
+      const emptyState = document.getElementById('empty-state');
+      const filterButtons = Array.from(document.querySelectorAll('.filter-button'));
+      const galleryDialog = document.getElementById('gallery-dialog');
+      const galleryGrid = document.getElementById('gallery-grid');
+      const closeButton = document.querySelector('.close-button');
+
+      function renderEntries(filter = 'all') {
+        const visibleEntries = entries.filter(entry => filter === 'all' || entry.type === filter);
+
+        timelineList.innerHTML = visibleEntries
+          .map(entry => {
+            const companyMarkup = entry.href
+              ? `<a class="timeline-company" href="${entry.href}" target="_blank" rel="noreferrer">${entry.company}</a>`
+              : `<span class="timeline-company">${entry.company}</span>`;
+
+            const galleryMarkup = entry.gallery
+              ? '<button class="gallery-button" type="button" data-gallery="manga">Open screenshot gallery</button>'
+              : '';
+
+            return `
+              <article class="timeline-item" data-type="${entry.type}">
+                <div class="timeline-card">
+                  <img class="logo" src="${entry.image}" alt="${entry.company} logo" />
+                  <div>
+                    <div class="timeline-top">
+                      <div>
+                        <h3 class="timeline-title">${entry.title}</h3>
+                        ${companyMarkup}
+                      </div>
+                      <span class="timeline-date">${entry.date}</span>
+                    </div>
+                    <p class="timeline-copy">${entry.summary}</p>
+                    <div class="tag-list">
+                      ${entry.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    ${galleryMarkup}
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join('');
+
+        resultCount.textContent = `${visibleEntries.length} entr${visibleEntries.length === 1 ? 'y' : 'ies'}`;
+        emptyState.style.display = visibleEntries.length ? 'none' : 'block';
+      }
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          filterButtons.forEach(item => item.classList.remove('active'));
+          button.classList.add('active');
+          renderEntries(button.dataset.filter);
+        });
+      });
+
+      timelineList.addEventListener('click', event => {
+        const trigger = event.target.closest('[data-gallery="manga"]');
+        if (!trigger) return;
+
+        const mangaEntry = entries.find(entry => entry.gallery);
+        galleryGrid.innerHTML = mangaEntry.gallery
+          .map(src => `<img src="${src}" alt="Mobile manga reader screenshot" />`)
+          .join('');
+
+        galleryDialog.showModal();
+      });
+
+      closeButton.addEventListener('click', () => galleryDialog.close());
+      galleryDialog.addEventListener('click', event => {
+        const bounds = galleryDialog.getBoundingClientRect();
+        const clickedInDialog =
+          bounds.top <= event.clientY &&
+          event.clientY <= bounds.top + bounds.height &&
+          bounds.left <= event.clientX &&
+          event.clientX <= bounds.left + bounds.width;
+
+        if (!clickedInDialog) galleryDialog.close();
+      });
+
+      renderEntries();
+    </script>
+  </body>
+</html>
