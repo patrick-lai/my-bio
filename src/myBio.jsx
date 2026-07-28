@@ -28,19 +28,25 @@ import mm3 from './assets/mangoManga/3.jpg';
 
 const MySwal = withReactContent(Swal);
 
+const LinkButton = ({ children, ...props }) => (
+  <button type="button" className="inline-link-button" {...props}>
+    {children}
+  </button>
+);
+
 const IframeLink = ({ href, children }) => (
-  <a
+  <LinkButton
     onClick={() =>
       MySwal.fire(
         <Browser url={href}>
           {/* By pass x-frame-options, https://github.com/niutech/x-frame-bypass */}
-          <iframe is="x-frame-bypass" src={href} />
+          <iframe title={typeof children === 'string' ? children : 'Linked preview'} is="x-frame-bypass" src={href} />
         </Browser>
       )
     }
   >
     {children}
-  </a>
+  </LinkButton>
 );
 
 const work = [
@@ -78,8 +84,8 @@ const projects = [
   {
     title: 'Realtime audio visualization',
     subtitle: (
-      <a href="http://chill-tones.surge.sh/" target="_blank">
-        Webaudio api
+      <a href="http://chill-tones.surge.sh/" target="_blank" rel="noopener noreferrer">
+        Webaudio API demo
       </a>
     ),
     from: dayjs('2016-02'),
@@ -88,37 +94,36 @@ const projects = [
   {
     title: 'Mobile manga reader',
     subtitle: (
-      <a
+      <LinkButton
         onClick={() =>
           MySwal.fire(
-            <h3 style={{ color: 'white' }}>React native app on iOS/Android</h3>,
+            <h3 style={{ color: 'white' }}>React Native app on iOS and Android</h3>,
             <div className="flex-row-images" style={{ width: '100%', transform: 'scale(0.8)' }}>
               <IPhone>
-                <img src={mm0} />
+                <img src={mm0} alt="Manga reader home screen" />
               </IPhone>
               <IPhone>
-                <img src={mm1} />
+                <img src={mm1} alt="Manga reader library screen" />
               </IPhone>
               <IPhone>
-                <img src={mm2} />
+                <img src={mm2} alt="Manga reader detail screen" />
               </IPhone>
               <IPhone>
-                <img src={mm3} />
+                <img src={mm3} alt="Manga reader reading screen" />
               </IPhone>
             </div>
           )
         }
-        target="_blank"
       >
-        React native
-      </a>
+        React Native preview
+      </LinkButton>
     ),
     from: dayjs('2018-06'),
     monogram: getUrl(reactNativeLogo),
   },
   {
     title: 'iPhone sniper',
-    subtitle: 'Just SMSed me when the iphone was in stock',
+    subtitle: 'SMS stock alert experiment',
     from: dayjs('2017-08'),
     monogram: getUrl(nodeLogo),
   },
@@ -127,7 +132,7 @@ const projects = [
 const achievements = [
   {
     title: 'First place security tournament',
-    subtitle: <IframeLink href="https://securecodewarrior.com/">Secure code warrior</IframeLink>,
+    subtitle: <IframeLink href="https://securecodewarrior.com/">Secure Code Warrior</IframeLink>,
     from: dayjs('2018-06'),
     monogram: getUrl(secureWarriorLogo),
   },
@@ -138,13 +143,13 @@ const achievements = [
     monogram: getUrl(iagLogo),
   },
   {
-    title: 'Mensa Membership',
-    subtitle: <IframeLink href="https://www.mensa.org.au/">Australian Mensa Group</IframeLink>,
+    title: 'Mensa membership',
+    subtitle: <IframeLink href="https://www.mensa.org.au/">Australian Mensa</IframeLink>,
     from: dayjs('2018-08'),
     monogram: getUrl(mensaLogo),
   },
   {
-    title: 'First Clinic launched',
+    title: 'First clinic launched',
     subtitle: (
       <IframeLink href="https://nextpracticehealth.com/locations/wa-cloverdale">
         Next Practice Health Cloverdale

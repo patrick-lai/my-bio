@@ -3,16 +3,19 @@
 @import './_variables.less';
 
 html {
-  overflow: hidden;
+  overflow-x: hidden;
   line-height: 1.5em;
   background-color: @color-base;
+  scroll-behavior: smooth;
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  color: white;
 }
 
-a {
+a,
+.inline-link-button {
   all: unset;
   transition: all 200ms ease;
   cursor: pointer;
@@ -20,8 +23,13 @@ a {
   font-style: italic;
 }
 
-a:hover {
+a:hover,
+.inline-link-button:hover {
   color: @color-highlight;
+}
+
+button {
+  font: inherit;
 }
 
 .page {
@@ -35,14 +43,113 @@ a:hover {
 }
 
 .jumbotron {
-  margin-top: 100px;
-  height: 20vh;
-  min-height: 200px;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  font-size: 1.5em;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.hero-card {
+  width: min(880px, 100%);
+  text-align: left;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  background: rgba(7, 18, 26, 0.72);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+
+  h1 {
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    line-height: 0.95;
+    margin: 0.15em 0;
+    color: white;
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  color: fade(white, 72%);
+}
+
+.hero-copy,
+.timeline-copy {
+  max-width: 60ch;
+  color: fade(white, 78%);
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 600;
+
+  &.primary {
+    background: linear-gradient(135deg, #7bdff2, #4facfe);
+    color: #082032;
+  }
+
+  &.secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  &.ghost {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+    background: transparent;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    color: inherit;
+  }
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.hero-stat {
+  padding: 1rem 1.1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  strong,
+  span {
+    display: block;
+  }
+
+  strong {
+    font-size: 1.4rem;
+    margin-bottom: 0.35rem;
+  }
+
+  span {
+    color: fade(white, 70%);
+    font-size: 0.92rem;
+  }
 }
 
 .contact-details {
@@ -53,7 +160,6 @@ a:hover {
   justify-content: space-around;
   width: 100%;
 
-  // TODO: test on touch devices
   > a {
     color: @color-bright;
     transition: all 50ms ease;
@@ -79,6 +185,38 @@ a:hover {
   }
 }
 
+.timeline-shell {
+  padding: 0 1.5rem 4rem;
+}
+
+.timeline-header {
+  width: min(1040px, 100%);
+  margin: 0 auto 1.5rem;
+}
+
+.timeline-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  padding: 0.7rem 1rem;
+
+  &.--active {
+    background: white;
+    color: #0f2027;
+  }
+}
+
 .timeline-container {
   display: flex;
   align-content: center;
@@ -90,13 +228,26 @@ a:hover {
   }
 }
 
-.monogram-bg {
-  // overflow: hidden;
-  // position: relative;
-  // To fight the timeline lib's css
-  // padding: 1em 0 !important;
-  // margin: 1em 0 !important;
+.timeline-results-header {
+  width: min(1040px, 100%);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  color: white;
 
+  h3 {
+    margin-bottom: 0.25rem;
+    color: white;
+  }
+
+  span {
+    color: fade(white, 70%);
+  }
+}
+
+.monogram-bg {
   & > .pattern {
     transform: rotate(-30deg);
     transform-origin: 0% 30%;
@@ -121,14 +272,18 @@ a:hover {
   justify-content: space-around;
 }
 
-@media only screen and (min-width: 1170px) {
-  .jumbotron {
-    margin-top: 200px;
-    font-size: 2em;
+@media only screen and (max-width: 767px) {
+  .hero-card {
+    padding: 1.5rem;
   }
 
-  .contact-details {
-    font-size: 1.5em;
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-results-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
