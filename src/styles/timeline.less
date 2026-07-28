@@ -26,7 +26,7 @@
   left: 18px;
   height: 100%;
   width: 4px;
-  background: @color-bright;
+  background: rgba(255, 255, 255, 0.24);
 }
 @media only screen and (min-width: 1170px) {
   .vertical-timeline.vertical-timeline--two-columns {
@@ -75,7 +75,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px @color-bright, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3), inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 }
 .vertical-timeline-element-icon svg {
   display: block;
@@ -163,7 +163,7 @@
   overflow: hidden;
   position: relative;
   margin-left: 60px;
-  border-radius: 0.25em;
+  border-radius: 24px;
   padding: 0;
 
   & > .item-content {
@@ -174,8 +174,53 @@
 }
 
 .item-content {
-  background-color: @color-bright;
+  background: linear-gradient(180deg, rgba(240, 244, 247, 0.98), rgba(224, 230, 235, 0.96));
   padding: 2em;
+  color: #17222d;
+}
+
+.item-type {
+  display: inline-flex;
+  margin-bottom: 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(22, 52, 74, 0.08);
+  color: #35536a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.item-summary {
+  margin: 1rem 0 0;
+  color: #233545;
+}
+
+.item-highlights {
+  margin: 1rem 0 0;
+  padding-left: 1.1rem;
+  color: #233545;
+}
+
+.item-highlights li + li {
+  margin-top: 0.4rem;
+}
+
+.item-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.item-skill-pill {
+  display: inline-flex;
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(53, 83, 106, 0.1);
+  color: #284359;
+  font-size: 0.84rem;
 }
 
 .vertical-timeline-element--no-children .vertical-timeline-element-content {
@@ -195,15 +240,13 @@
   font-size: 13px;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: #333;
 }
 .vertical-timeline-element-content .vertical-timeline-element-date {
-  color: #333;
+  color: rgba(255, 255, 255, 0.8);
   display: inline-block;
 }
 
 .vertical-timeline-element-content p {
-  margin: 1em 0 0;
   line-height: 1.6;
 }
 .vertical-timeline-element-title {
@@ -211,12 +254,12 @@
 }
 .vertical-timeline-element-subtitle {
   font-size: 1em;
-  margin: 0;
+  margin: 0.3rem 0 0;
 }
 .vertical-timeline-element-content .vertical-timeline-element-date {
   float: left;
   margin: 0.5em 1em;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 .vertical-timeline-element-content::before {
   content: '';
@@ -226,7 +269,7 @@
   height: 0;
   width: 0;
   border: 7px solid transparent;
-  border-right: 7px solid @color-bright;
+  border-right: 7px solid rgba(240, 244, 247, 0.98);
 }
 .vertical-timeline-element--no-children .vertical-timeline-element-content::before {
   display: none;
@@ -252,7 +295,6 @@
     }
   }
   .vertical-timeline-element-content .vertical-timeline-element-date {
-    color: @color-bright;
     display: inline-block;
     padding: 0.5em 3em;
   }
@@ -264,7 +306,7 @@
     top: 24px;
     left: 100%;
     border-color: transparent;
-    border-left-color: @color-bright;
+    border-left-color: rgba(240, 244, 247, 0.98);
   }
   .vertical-timeline--two-columns .vertical-timeline-element-content .vertical-timeline-element-date {
     position: absolute;
@@ -292,7 +334,7 @@
     left: auto;
     right: 100%;
     border-color: transparent;
-    border-right-color: @color-bright;
+    border-right-color: rgba(240, 244, 247, 0.98);
   }
   .vertical-timeline--two-columns
     .vertical-timeline-element.vertical-timeline-element--right
@@ -439,13 +481,25 @@
   }
 }
 
-// Some overrides
-
 .vertical-timeline-element-title {
   font-size: 1.6em !important;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .vertical-timeline-element-date {
-  font-size: 1.2em !important;
+  font-size: 1.05em !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .vertical-timeline {
+    width: calc(100% - 0.5rem);
+  }
+
+  .vertical-timeline-element-content {
+    margin-left: 52px;
+  }
+
+  .item-content {
+    padding: 1.2rem;
+  }
 }
