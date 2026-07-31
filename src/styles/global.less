@@ -64,7 +64,7 @@ button {
 
 .hero-card {
   width: 100%;
-  max-width: 720px;
+  max-width: 760px;
   padding: 2rem;
   border-radius: 28px;
   background: rgba(8, 17, 28, 0.72);
@@ -81,10 +81,27 @@ button {
 }
 
 .hero-summary {
-  max-width: 34rem;
+  max-width: 36rem;
   margin: 1rem auto 0;
   font-size: 1.05rem;
   color: rgba(255, 255, 255, 0.82);
+}
+
+.hero-focus {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+
+  > span {
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+  }
 }
 
 .contact-details {
@@ -155,6 +172,32 @@ button {
   }
 }
 
+.hero-proof {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1rem;
+  text-align: left;
+
+  > div {
+    padding: 1rem 1.1rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  strong {
+    color: white;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+  }
+}
+
 .scroll-cta {
   display: inline-flex;
   align-items: center;
@@ -186,7 +229,7 @@ button {
 
   p {
     margin: 0.75rem 0 0;
-    max-width: 36rem;
+    max-width: 38rem;
     color: rgba(255, 255, 255, 0.75);
   }
 }
@@ -250,10 +293,26 @@ button {
   justify-content: space-around;
 }
 
+.preview-gallery {
+  color: white;
+}
+
+.preview-phones {
+  width: 100%;
+  gap: 0.5rem;
+  transform: scale(0.82);
+  transform-origin: top center;
+}
+
 // Swal override
 .swal2-popup {
   width: auto !important;
-  background: rgba(106, 124, 131, 0.9) !important;
+  background: rgba(10, 19, 29, 0.94) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.swal2-title {
+  color: white !important;
 }
 
 @media only screen and (max-width: 767px) {
@@ -267,7 +326,8 @@ button {
     border-radius: 22px;
   }
 
-  .hero-highlights {
+  .hero-highlights,
+  .hero-proof {
     grid-template-columns: 1fr;
   }
 
@@ -277,6 +337,15 @@ button {
     > a {
       width: 100%;
     }
+  }
+
+  .hero-focus {
+    justify-content: flex-start;
+  }
+
+  .preview-phones {
+    flex-wrap: wrap;
+    transform: none;
   }
 }
 

@@ -23,6 +23,8 @@ const FILTERS = [
   { key: 'achievement', label: 'Achievements' }
 ];
 
+const FOCUS_AREAS = ['Product-minded engineering', 'Frontend craft', 'Fast iteration', 'Clear UX'];
+
 const determinePages = () => {
   try {
     const { clientWidth, clientHeight } = document.documentElement;
@@ -85,8 +87,14 @@ const App = () => {
             <span className="eyebrow">Portfolio</span>
             <h1>Patrick Lai</h1>
             <p className="hero-summary">
-              Full stack software engineer with a timeline of roles, side projects, and standout wins.
+              Full stack software engineer building customer-facing products with a bias for usable,
+              polished experiences.
             </p>
+            <div className="hero-focus" aria-label="Focus areas">
+              {FOCUS_AREAS.map(item => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
             <div className="contact-details">
               <a href="mailto:mrphlai@gmail.com" aria-label="Email Patrick Lai">
                 <IoMdMail />
@@ -111,6 +119,16 @@ const App = () => {
                 <span>achievements</span>
               </div>
             </div>
+            <div className="hero-proof">
+              <div>
+                <strong>Built for real users</strong>
+                <p>From ecommerce and insurance to healthcare, the work centers on practical user journeys.</p>
+              </div>
+              <div>
+                <strong>Shows the why behind the work</strong>
+                <p>The timeline now explains intent, interaction, and outcomes instead of listing titles only.</p>
+              </div>
+            </div>
             <a href="#timeline" className="scroll-cta">
               <FaArrowDown />
               <span>Browse timeline</span>
@@ -125,7 +143,9 @@ const App = () => {
             <div>
               <span className="eyebrow">Explore</span>
               <h2>Career timeline</h2>
-              <p>Switch between work history, projects, and achievements to scan the story faster.</p>
+              <p>
+                Filter the timeline to scan work history, side projects, or achievements without digging through unrelated items.
+              </p>
             </div>
             <div className="timeline-filters" role="tablist" aria-label="Timeline filters">
               {FILTERS.map(filter => {
