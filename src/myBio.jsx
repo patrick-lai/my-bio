@@ -7,6 +7,7 @@ import withReactContent from 'sweetalert2-react-content';
 import React from 'react';
 import dayjs from 'dayjs'; // Moment waaay tooo big
 import { setItemsType, getUrl } from './_helpers';
+import IPhone from './components/iPhone';
 import Browser from './components/Browser';
 
 // Logos
@@ -27,160 +28,148 @@ import mm3 from './assets/mangoManga/3.jpg';
 
 const MySwal = withReactContent(Swal);
 
-const openPreview = ({ title, content }) =>
-  MySwal.fire({
-    title,
-    html: content,
-    background: 'rgba(18, 24, 38, 0.96)',
-    showConfirmButton: false,
-    width: 'min(960px, 92vw)',
-    customClass: {
-      popup: 'preview-modal'
-    }
-  });
+const stopNavigation = e => e.preventDefault();
 
-const PreviewLink = ({ children, title, content }) => (
-  <button className="inline-link-button" type="button" onClick={() => openPreview({ title, content })}>
-    {children}
-  </button>
-);
-
-const ExternalLink = ({ href, children }) => (
-  <a href={href} target="_blank" rel="noreferrer noopener">
+const IframeLink = ({ href, children }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+    onClick={e => {
+      stopNavigation(e);
+      MySwal.fire(
+        <Browser url={href}>
+          {/* By pass x-frame-options, https://github.com/niutech/x-frame-bypass */}
+          <iframe title={href} is="x-frame-bypass" src={href} />
+        </Browser>
+      );
+    }}
+  >
     {children}
   </a>
-);
-
-const previewWebsite = href => (
-  <Browser url={href}>
-    {/* By pass x-frame-options, https://github.com/niutech/x-frame-bypass */}
-    <iframe title={href} is="x-frame-bypass" src={href} />
-  </Browser>
 );
 
 const work = [
   {
     title: 'Senior developer',
-    subtitle: <PreviewLink title="Insurance Australia Group" content={previewWebsite('https://www.iag.com.au/')}>Insurance Australia Group</PreviewLink>,
+    subtitle: <IframeLink href="https://www.iag.com.au/">Insurance Australia Group</IframeLink>,
     from: dayjs('2018-05'),
     to: 'present',
     monogram: getUrl(iagLogo),
-    summary: 'Shipped customer-facing software across policy, claims, and internal delivery platforms.',
-    highlights: ['Led full-stack delivery', 'Improved release confidence', 'Partnered with product and design'],
-    skills: ['React', 'Node.js', 'APIs']
+    content: 'Leading and shipping customer-facing insurance experiences across a large product surface.'
   },
   {
     title: 'Technical lead',
-    subtitle: <PreviewLink title="Next Practice Health" content={previewWebsite('https://nextpracticehealth.com/become-a-partner')}>Next Practice Health</PreviewLink>,
+    subtitle: <IframeLink href="https://nextpracticehealth.com/become-a-partner">Next Practice Health</IframeLink>,
     from: dayjs('2017-11'),
     to: dayjs('2018-05'),
     monogram: getUrl(nphLogo),
-    summary: 'Owned product direction and delivery for digital tools used by modern healthcare clinics.',
-    highlights: ['Set technical direction', 'Coordinated roadmap delivery', 'Mentored engineers'],
-    skills: ['Leadership', 'Product delivery', 'Architecture']
+    content: 'Took product ideas from concept to launch and helped define the engineering direction for a growing health platform.'
   },
   {
     title: 'Full stack developer',
-    subtitle: <PreviewLink title="Next Practice Health" content={previewWebsite('https://nextpracticehealth.com/become-a-partner')}>Next Practice Health</PreviewLink>,
+    subtitle: <IframeLink href="https://nextpracticehealth.com/become-a-partner">Next Practice Health</IframeLink>,
     from: dayjs('2016-01'),
     to: dayjs('2018-05'),
     monogram: getUrl(nphLogo),
-    summary: 'Built patient and clinic experiences spanning frontend, backend, and integrations.',
-    highlights: ['Delivered booking flows', 'Built clinic management features', 'Worked across the stack'],
-    skills: ['JavaScript', 'React', 'Integrations']
+    content: 'Built the web platform, partner tooling, and operational features needed to open new clinics quickly.'
   },
   {
     title: 'Frontend developer',
-    subtitle: <PreviewLink title="Koorong Books" content={previewWebsite('https://www.koorong.com/')}>Koorong Books</PreviewLink>,
+    subtitle: <IframeLink href="https://www.koorong.com/">Koorong Books</IframeLink>,
     from: dayjs('2013-04'),
     to: dayjs('2015-12'),
     monogram: getUrl(koorongLogo),
-    summary: 'Focused on ecommerce experiences and responsive interfaces for a large retail catalogue.',
-    highlights: ['Improved storefront UX', 'Delivered responsive pages', 'Collaborated with marketing'],
-    skills: ['Frontend', 'Ecommerce', 'Performance']
+    content: 'Focused on ecommerce UX, storefront polish, and the details that make online shopping feel dependable.'
   }
 ];
 
 const projects = [
   {
     title: 'Realtime audio visualization',
-    subtitle: <ExternalLink href="http://chill-tones.surge.sh/">Webaudio API demo</ExternalLink>,
+    subtitle: (
+      <a href="http://chill-tones.surge.sh/" target="_blank" rel="noreferrer">
+        Webaudio api
+      </a>
+    ),
     from: dayjs('2016-02'),
     monogram: getUrl(reactLogo),
-    summary: 'Experimented with motion and audio-reactive visuals to create an immersive browser experience.',
-    highlights: ['Rendered realtime visual effects', 'Explored browser audio APIs'],
-    skills: ['Web Audio API', 'Animation']
+    content: 'An experiment in turning sound into fluid visuals with a playful, highly interactive front end.'
   },
   {
     title: 'Mobile manga reader',
     subtitle: (
-      <PreviewLink
-        title="Mobile manga reader"
-        content={`
-          <h3 style="color:white;margin-bottom:1rem;">React Native app on iOS/Android</h3>
-          <div class="flex-row-images preview-gallery">
-            <div class="phone-frame"><img src="${mm0}" alt="Manga reader library screen" /></div>
-            <div class="phone-frame"><img src="${mm1}" alt="Manga reader discovery screen" /></div>
-            <div class="phone-frame"><img src="${mm2}" alt="Manga reader reading experience" /></div>
-            <div class="phone-frame"><img src="${mm3}" alt="Manga reader settings" /></div>
-          </div>
-        `}
+      <a
+        href="#manga-reader"
+        onClick={e => {
+          stopNavigation(e);
+          MySwal.fire(
+            <h3 style={{ color: 'white' }}>React native app on iOS/Android</h3>,
+            <div className="flex-row-images" style={{ width: '100%', transform: 'scale(0.8)' }}>
+              <IPhone>
+                <img alt="Mango Manga screenshot 1" src={mm0} />
+              </IPhone>
+              <IPhone>
+                <img alt="Mango Manga screenshot 2" src={mm1} />
+              </IPhone>
+              <IPhone>
+                <img alt="Mango Manga screenshot 3" src={mm2} />
+              </IPhone>
+              <IPhone>
+                <img alt="Mango Manga screenshot 4" src={mm3} />
+              </IPhone>
+            </div>
+          );
+        }}
       >
-        React Native showcase
-      </PreviewLink>
+        React native
+      </a>
     ),
     from: dayjs('2018-06'),
     monogram: getUrl(reactNativeLogo),
-    summary: 'Designed a native reading experience with image-heavy navigation and mobile-first performance constraints.',
-    highlights: ['Built for iOS and Android', 'Optimized image-heavy screens'],
-    skills: ['React Native', 'Mobile UX']
+    content: 'A polished reading experience for long-form content, designed for fast browsing and comfortable mobile sessions.'
   },
   {
     title: 'iPhone sniper',
-    subtitle: 'SMS alerts for hard-to-find stock drops',
+    subtitle: 'Just SMSed me when the iphone was in stock',
     from: dayjs('2017-08'),
     monogram: getUrl(nodeLogo),
-    summary: 'Automated stock monitoring and notifications to remove the need for manual refresh loops.',
-    highlights: ['Automated alerts', 'Integrated messaging notifications'],
-    skills: ['Node.js', 'Automation']
+    content: 'A lightweight automation tool that watched stock levels and turned a tedious manual task into a notification.'
   }
 ];
 
 const achievements = [
   {
     title: 'First place security tournament',
-    subtitle: <PreviewLink title="Secure Code Warrior" content={previewWebsite('https://securecodewarrior.com/')}>Secure Code Warrior</PreviewLink>,
+    subtitle: <IframeLink href="https://securecodewarrior.com/">Secure code warrior</IframeLink>,
     from: dayjs('2018-06'),
     monogram: getUrl(secureWarriorLogo),
-    summary: 'Placed first in a competitive security challenge focused on secure engineering practices.'
+    content: 'Won a hands-on security competition by finding and fixing vulnerabilities under pressure.'
   },
   {
     title: 'First place IAG Hackathon',
-    subtitle: <PreviewLink title="Insurance Australia Group" content={previewWebsite('https://www.iag.com.au/')}>Insurance Australia Group</PreviewLink>,
+    subtitle: <IframeLink href="https://www.iag.com.au/">Insurance Australia Group</IframeLink>,
     from: dayjs('2018-07'),
     monogram: getUrl(iagLogo),
-    summary: 'Won an internal hackathon by rapidly shaping and delivering a promising product idea.'
+    content: 'Built and pitched a product concept quickly enough to win a cross-team hackathon.'
   },
   {
-    title: 'Mensa membership',
-    subtitle: <PreviewLink title="Australian Mensa" content={previewWebsite('https://www.mensa.org.au/')}>Australian Mensa</PreviewLink>,
+    title: 'Mensa Membership',
+    subtitle: <IframeLink href="https://www.mensa.org.au/">Australian Mensa Group</IframeLink>,
     from: dayjs('2018-08'),
     monogram: getUrl(mensaLogo),
-    summary: 'Recognized through membership in Australian Mensa.'
+    content: 'A personal milestone that adds some character alongside the professional story.'
   },
   {
-    title: 'First clinic launched',
+    title: 'First Clinic launched',
     subtitle: (
-      <PreviewLink
-        title="Next Practice Health Cloverdale"
-        content={previewWebsite('https://nextpracticehealth.com/locations/wa-cloverdale')}
-      >
+      <IframeLink href="https://nextpracticehealth.com/locations/wa-cloverdale">
         Next Practice Health Cloverdale
-      </PreviewLink>
+      </IframeLink>
     ),
     from: dayjs('2018-03'),
     monogram: getUrl(nphLogo),
-    summary: 'Helped launch the first clinic backed by the digital platform built at Next Practice Health.'
+    content: 'Helped deliver the software foundations behind the first clinic launch for the brand.'
   }
 ];
 
