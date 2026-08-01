@@ -5,9 +5,13 @@
 
 import React from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { FaBeer } from 'react-icons/fa';
-import { getUrl } from '../../_helpers';
 import Atv from '../Atv';
+
+const LABELS = {
+  work: 'Work',
+  project: 'Project',
+  achievement: 'Achievement'
+};
 
 const Monogram = ({ backgroundImage, children }) => (
   <div className="monogram-bg">
@@ -16,7 +20,7 @@ const Monogram = ({ backgroundImage, children }) => (
   </div>
 );
 
-const makeElement = ({ title, subtitle, content, from, to, icon = {}, monogram }) => (
+const makeElement = ({ title, subtitle, content, from, to, icon = {}, monogram, type }) => (
   <VerticalTimelineElement
     key={title + from}
     className="vertical-timeline-element--work"
@@ -29,17 +33,20 @@ const makeElement = ({ title, subtitle, content, from, to, icon = {}, monogram }
       .join(' - ')}
     {...icon}
   >
-    <Atv style={{ width: 468, height: 190 }}>
+    <Atv style={{ width: '100%', height: 'auto' }}>
       <Monogram backgroundImage={monogram}>
         <div className="item-content">
+          <span className={`item-pill --${type}`}>{LABELS[type]}</span>
           <h3 className="vertical-timeline-element-title">{title}</h3>
           <h4 className="vertical-timeline-element-subtitle">{subtitle}</h4>
-          <div>{content}</div>
+          {content && <p>{content}</p>}
         </div>
       </Monogram>
     </Atv>
   </VerticalTimelineElement>
 );
 
-// TODO: Implement filters
-export default ({ filter = [], items = [] }) => <VerticalTimeline>{items.map(makeElement)}</VerticalTimeline>;
+export default ({ filter = 'all', items = [] }) => {
+  const filteredItems = filter === 'all' ? items : items.filter(item => item.type === filter);
+  return <VerticalTimeline>{filteredItems.map(makeElement)}</VerticalTimeline>;
+};
